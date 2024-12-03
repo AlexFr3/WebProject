@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `MangaParadise`.`Manga` (
   `Titolo` VARCHAR(80) NOT NULL,
   `Descrizione` VARCHAR(255) NOT NULL,
   `Quantità` INT NOT NULL,
+  `Image` VARCHAR(255) INT NOT NULL,
   PRIMARY KEY (`idManga`)
 );
 
