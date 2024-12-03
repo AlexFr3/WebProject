@@ -13,8 +13,7 @@ CREATE TABLE IF NOT EXISTS `MangaParadise`.`Utente` (
   `Cognome` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(45) NOT NULL,
   `Venditore` TINYINT(1) NULL,
-  PRIMARY KEY (`Email`),
-  UNIQUE INDEX `Password_UNIQUE` (`Password`)
+  PRIMARY KEY (`Email`)
 );
 
 -- -----------------------------------------------------
