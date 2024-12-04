@@ -1,0 +1,16 @@
+body>main>section>article>input[type="button"] {
+    font-family: 'Arial', Courier, monospace;
+    background-color: #0f2f75;
+    border: none;
+    color: white;
+    padding: 6px 12px; 
+    text-align: center;
+    font-size: 14px; 
+    margin: 2px 1px; 
+    cursor: pointer;
+    border-radius: 20px; 
+}
+
+body>main>section>article>input[type="button"]:hover {
+    background-color: #36a8df;
+}
