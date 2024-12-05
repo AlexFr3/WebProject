@@ -14,12 +14,13 @@ body>header>nav.header-nav {
     justify-content: space-between;
     margin-left: 2%;
     margin-right: 2%;
-    margin-bottom: 0%;
+    
     padding-bottom: 0%;
 }
 
 body>header>nav>img.logo {
     width: 180px;
+    margin-top: 2%;
 }
 
 body>header>nav>img.list-menù {
