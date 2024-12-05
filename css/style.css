@@ -4,7 +4,7 @@
 }
 
 header {
-    border-bottom: 1px solid #35a9df;
+    border-bottom: 1px solid #afacac;
  }
  
  
@@ -12,20 +12,24 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left:2%;
+    margin-right: 2%;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
  }
  
  
  body > header > nav > img.logo{
-    width: 100px;
+    width: 200px;
  }
  
  
  body > header > nav > img.list-menù{
-    width: 30px;
+    width: 50px;
  }
  
  body > header > nav > img.shopping-cart{
-    width: 30px;
+    width: 50px;
  }
 
  body > main > section > h1{
