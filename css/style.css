@@ -5,63 +5,63 @@
 
 header {
     border-bottom: 1px solid #afacac;
- }
- 
- 
- body > header > nav.header-nav{
+}
+
+
+body>header>nav.header-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-left:2%;
+    margin-left: 2%;
     margin-right: 2%;
     margin-bottom: 0%;
     padding-bottom: 0%;
- }
- 
- body > header > nav > img.logo{
-    width: 180px;
- }
- 
- body > header > nav > img.list-menù{
-    width: 30px;
- }
- 
- body > header > nav > img.shopping-cart{
-    width: 30px;
- }
+}
 
- body > main > section > h1{
+body>header>nav>img.logo {
+    width: 180px;
+}
+
+body>header>nav>img.list-menù {
+    width: 30px;
+}
+
+body>header>nav>img.shopping-cart {
+    width: 30px;
+}
+
+body>main>section>h1 {
     text-align: center;
     text-shadow: 2px 2px 2px #35a9df;
     margin: 10px;
- }
- 
+}
+
 body>main>section>article>input[type="button"] {
     font-family: 'Arial', Courier, monospace;
     background-color: #0f2f75;
     border: none;
     color: white;
-    padding: 6px 12px; 
+    padding: 6px 12px;
     text-align: center;
-    font-size: 14px; 
-    margin: 2px 1px; 
+    font-size: 14px;
+    margin: 2px 1px;
     cursor: pointer;
-    border-radius: 20px; 
+    border-radius: 20px;
 }
 
 body>main>section>article>input[type="button"]:hover {
     background-color: #36a8df;
 }
 
-body > main > section > img {
+body>main>section>img {
     width: 100%;
 }
 
-body > main > section {
+body>main>section {
     text-align: center;
 }
 
-body > main > section > article {
+body>main>section>article {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -69,16 +69,30 @@ body > main > section > article {
     margin: 10px;
 }
 
-body > footer {
+body>footer {
     text-align: center;
     background-color: #f5f6fa;
 }
 
-body > footer p {
+body>footer p {
     display: inline-flex;
     align-items: center;
 }
 
-body > footer img{
+body>footer img {
     width: 80px;
+}
+
+@media screen and (min-width:1024px) {
+    body>header>nav>img.logo {
+        width: 180px;
+    }
+
+    body>header>nav>img.list-menù {
+        width: 40px;
+    }
+
+    body>header>nav>img.shopping-cart {
+        width: 40px;
+    }
 }
