@@ -1,3 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    border-bottom: 1px solid #35a9df;
+ }
+ 
+ 
+ body > header > nav.header-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ 
+ 
+ body > header > nav > img.logo{
+    width: 100px;
+ }
+ 
+ 
+ body > header > nav > img.list-menù{
+    width: 30px;
+ }
+ 
+ body > header > nav > img.shopping-cart{
+    width: 30px;
+ }
+
+ body > main > section > h1{
+    text-align: center;
+    text-shadow: 2px 2px 2px #35a9df;
+    margin: 10px;
+ }
+ 
 body>main>section>article>input[type="button"] {
     font-family: 'Arial', Courier, monospace;
     background-color: #0f2f75;
@@ -13,4 +49,34 @@ body>main>section>article>input[type="button"] {
 
 body>main>section>article>input[type="button"]:hover {
     background-color: #36a8df;
+}
+
+body > main > section > img {
+    width: 100%;
+}
+
+body > main > section {
+    text-align: center;
+}
+
+body > main > section > article {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+body > footer {
+    text-align: center;
+    background-color: #f5f6fa;
+}
+
+body > footer p {
+    display: inline-flex;
+    align-items: center;
+}
+
+body > footer img{
+    width: 80px;
 }
