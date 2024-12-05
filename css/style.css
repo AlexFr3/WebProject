@@ -18,18 +18,16 @@ header {
     padding-bottom: 0%;
  }
  
- 
  body > header > nav > img.logo{
-    width: 200px;
+    width: 180px;
  }
  
- 
  body > header > nav > img.list-menù{
-    width: 50px;
+    width: 30px;
  }
  
  body > header > nav > img.shopping-cart{
-    width: 50px;
+    width: 30px;
  }
 
  body > main > section > h1{
