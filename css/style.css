@@ -113,6 +113,14 @@ body>footer img {
     width: 5%;
 }
 
+body > nav > img {
+    width: 5%;
+    margin-bottom: 10%;
+    margin-top: 5%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
 
 @media screen and (min-width:1024px) {
     body>main>section>article {
