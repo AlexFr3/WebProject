@@ -83,13 +83,14 @@ body>main>section>article {
 }
 
 body>footer {
-    text-align: center;
     background-color: #f5f6fa;
+    padding: 10px;
 }
 
 body>footer p {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
 }
 
 body>footer img {
