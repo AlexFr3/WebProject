@@ -24,6 +24,12 @@ body>header>nav>img.logo {
 
 body>header>nav>img.list-menù {
     width: 30px;
+    cursor: pointer; /* Cambia il cursore quando l'immagine viene passata col mouse */
+    transition: transform 0.2s ease; /* Aggiunge un'animazione per il hover */
+}
+
+body>header>nav>img.list-menù:hover {
+    transform: scale(1.1);
 }
 
 body>header>nav>img.shopping-cart {
@@ -89,6 +95,7 @@ body>footer p {
 body>footer img {
     width: 80px;
 }
+
 
 @media screen and (min-width:1024px) {
     body>header>nav>img.logo {
