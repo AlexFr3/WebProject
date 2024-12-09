@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-bs-theme="white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,22 +18,18 @@
       <nav class="header-nav">
         <button type="button" class="btn-close" aria-label="Close"></button>
         <img class="logo" src="../../img/Logo.png" alt="Logo" width="500" />
-        <img
-          class="shopping-cart"
-          src="../../img/ShoppingCart.png"
-          alt="Pulsante carrello"
-          width="100"
-        />
+        <button type="button" class="btn p-0 border-0 bg-transparent hover-effect">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+          </svg>
+        </button>
       </nav>
     </header>
-    <nav class="col-md-12 text-center" style="margin-top: 5%;">
-      <img src="../../img/DarkMode.png" alt="dark mode image"/>
-      <div class="h4 pb-2 mb-4 text-dark border-bottom border-dark  mx-2 ">
-        Manga
-      </div>
-      <div class="h4 pb-2 mb-4 text-dark border-bottom border-dark  mx-2 ">
-        Novità
-      </div>
+    <nav>
+      <ul style="list-style-type: none;">
+        <li><a href="#">Novità</a></li>
+        <li><a href="#">Manga</a></li>
+      </ul>
     </nav>
     <main>
       <section>

@@ -32,6 +32,15 @@ body>header>nav>img.list-menù:hover {
     width: 5%;
 }
 
+body > nav > ul > li {
+    cursor: pointer; 
+    transition: transform 0.2s ease; 
+}
+
+body> nav > ul > li:hover {
+    transform: scale(1.1);
+}
+
 body>header>nav>img.shopping-cart {
     width: 5%;
 }
@@ -121,6 +130,27 @@ body > nav > img {
     border-radius: 5px;
 }
 
+body > nav {
+    text-align: center;
+    margin-top: 10%;
+}
+
+body > nav > ul {
+    list-style-position: outside;
+    margin: 0%;
+    padding: 0%;
+}
+
+body > nav > ul > li {
+    border-bottom: 1px solid black;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 1%;
+}
+body > nav > ul > li > a {
+    text-decoration: none;
+    color: black;
+}
 
 @media screen and (min-width:1024px) {
     body>main>section>article {
