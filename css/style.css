@@ -7,7 +7,7 @@ header {
     border-bottom: 1px solid #d6d4d4;
 }
 
-body>header>nav.header-nav {
+body>header>nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,18 +16,18 @@ body>header>nav.header-nav {
     padding-bottom: 0%;
 }
 
-body>header>nav>img.logo {
+body>header>nav:nth-child(2) {
     width: 25%;
     margin-top: 2%;
 }
 
-body>header>nav>img.list-menù {
+body>header>nav>img:nth-child(1) {
     width: 5%;
     cursor: pointer; 
     transition: transform 0.2s ease; 
 }
 
-body>header>nav>img.list-menù:hover {
+body>header>nav>img:nth-child(1):hover {
     transform: scale(1.1);
     width: 5%;
 }
@@ -41,7 +41,7 @@ body> nav > ul > li:hover {
     transform: scale(1.1);
 }
 
-body>header>nav>img.shopping-cart {
+body>header>nav>img:nth-child(3) {
     width: 5%;
 }
 
