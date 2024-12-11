@@ -7,7 +7,7 @@ header {
     border-bottom: 1px solid #d6d4d4;
 }
 
-body header{
+body header {
     height: 10%;
 }
 
@@ -18,12 +18,12 @@ body header img {
     margin-bottom: 0%;
 }
 
-body > nav > ul > li {
-    cursor: pointer; 
-    transition: transform 0.2s ease; 
+body>nav>ul>li {
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-body> nav > ul > li:hover {
+body>nav>ul>li:hover {
     transform: scale(1.1);
 }
 
@@ -32,6 +32,7 @@ body>main>section>h1 {
     text-shadow: 2px 2px 2px #35a9df;
     margin: 2%;
 }
+
 body>main>section>article>h2 {
     text-align: center;
     margin: 2%;
@@ -52,7 +53,7 @@ body>main>section>article>input[type="button"] {
     border-radius: 20px;
 }
 
-body > main > section > input[type = "button"] {
+body>main>section>input[type="button"] {
     font-family: 'Arial', Courier, monospace;
     background-color: #0f2f75;
     border: none;
@@ -104,7 +105,7 @@ body>footer img {
     width: 5%;
 }
 
-body > nav > img {
+body>nav>img {
     width: 5%;
     margin-bottom: 10%;
     margin-top: 5%;
@@ -112,25 +113,58 @@ body > nav > img {
     border-radius: 5px;
 }
 
-body > nav {
+body>nav {
     text-align: center;
 }
 
-body > nav > ul {
-    list-style-type: none;;
+body>nav>ul {
+    list-style-type: none;
+    ;
     margin: 0%;
     padding: 0%;
 }
 
-body main article img{
+body main article img {
     width: 100%;
 }
+
 @media screen and (min-width:1024px) {
-    body header{
+    body header {
         height: 6%;
     }
-    
+
     body>main>section>article {
         width: 12%;
     }
+}
+
+body>nav>ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f2f75;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;/* Rimuovi i punti elenco */
+}
+
+body>nav>ul>li {
+    margin: 0 10px;
+}
+
+body>nav>ul>li>a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;/* Rimuove la sottolineatura */
+    font-size: 17px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 10%;
+}
+
+body>nav>ul>li>a:hover {
+    background-color: #35a9df;
+    color: black;
 }
