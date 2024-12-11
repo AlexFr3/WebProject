@@ -12,5 +12,5 @@ document.querySelector("body>header>nav>img:nth-child(1)").addEventListener("cli
 });
 document.querySelector("body>header>nav>img:nth-child(1)").addEventListener("click", function () {
   console.log("cliccato");
-  window.location.href = "manga.html";
+  window.location.href = "catalog.html";
 });
