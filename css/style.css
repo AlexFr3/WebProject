@@ -128,16 +128,6 @@ body main article img {
     width: 100%;
 }
 
-@media screen and (min-width:1024px) {
-    body header {
-        height: 6%;
-    }
-
-    body>main>section>article {
-        width: 12%;
-    }
-}
-
 body>nav>ul {
     display: flex;
     justify-content: center;
@@ -153,7 +143,7 @@ body>nav>ul>li {
     margin: 0 10px;
 }
 
-body>nav>ul>li>a {
+body>nav>ul>li a {
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -170,3 +160,34 @@ body>nav>ul>li>a:hover {
     background-color: #35a9df;
     color: black;
 }
+@media screen and (min-width:1024px) {
+    body header {
+        height: 6%;
+    }
+
+    body>main>section>article {
+        width: 12%;
+    }
+}
+
+body>nav>ul>li>button {
+    margin: 0;
+    border: 0;
+    display: block;
+    color: #fff;
+    background-color: #0f2f75;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    /* Rimuove la sottolineatura */
+    font-size: 17px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 10%;
+}
+body>nav>ul>li>button:hover {
+    background-color: #35a9df;
+    color: black;
+}
+
+
