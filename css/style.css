@@ -37,6 +37,10 @@ body>main>section>article>h2 {
     text-align: center;
     margin: 2%;
     font-size: small;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 
@@ -47,7 +51,7 @@ body>main>section>article>input[type="button"] {
     color: white;
     padding: 6px 12px;
     text-align: center;
-    font-size: 14px;
+    font-size: 8px;
     margin: 2% 1px;
     cursor: pointer;
     border-radius: 20px;
@@ -140,7 +144,7 @@ body>nav>ul {
 }
 
 body>nav>ul>li {
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 body>nav>ul>li a {
@@ -168,26 +172,44 @@ body>nav>ul>li>a:hover {
     body>main>section>article {
         width: 12%;
     }
+    body>main>section>article>input[type="button"] {
+        font-size: 12px;
+    }
 }
 
-body>nav>ul>li>button {
-    margin: 0;
-    border: 0;
-    display: block;
-    color: #fff;
-    background-color: #0f2f75;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    /* Rimuove la sottolineatura */
-    font-size: 17px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 10%;
-}
 body>nav>ul>li>button:hover {
     background-color: #35a9df;
     color: black;
 }
 
+body > nav > ul {
+    display: flex;
+    flex-wrap: wrap; /* Permette alla lista di andare su più righe */
+    justify-content: center;
+    align-items: center;
+    background-color: #0f2f75;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+body > nav > ul > li {
+    margin: 5px; 
+}
+
+body > nav > ul > li > a, 
+body > nav > ul > li > button {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 0;
+    background-color: #0f2f75;
+    text-decoration: none;
+    /* Rimuove la sottolineatura */
+    border-radius: 15px;
+}
 
