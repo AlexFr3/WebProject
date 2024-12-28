@@ -65,22 +65,30 @@
     </section>
     <section>
       <h1>I più votati</h1>
+      <ul>
+      <li>
       <article>
         <img src="../img/Manga/naruto_vol_1.jpg" alt="Naruto Volume 1" />
         <h2>Naruto Vol. 1</h2>
         <p>5,99€</p>
         <input type="button" value="Aggiungi al carrello" />
       </article>
+      </li>
+      <li>
       <article>
         <img src="../img/Manga/one_piece_vol_1.jpg" alt="One Piece Volume 1" />
         <h2>One Piece Vol. 1</h2>
         <p>5,99€</p>
         <input type="button" value="Aggiungi al carrello" />
       </article>
+      </li>
+      <li>
       <article>
         <img src="../img/Manga/detective_conan_vol_1.jpg" alt="Detective conan Volume 1" />
         <h2>Conan Vol. 1</h2>
         <p>5,99€</p>
         <input type="button" value="Aggiungi al carrello" />
       </article>
+      </li>
+      </ul>
     </section>
