@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body nav{
+    background-color: #000000;
+}
+
 header {
     border-bottom: 1px solid #d6d4d4;
 }
@@ -18,22 +22,13 @@ body header img {
     margin-bottom: 0%;
 }
 
-body>nav>ul>li {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-body>nav>ul>li:hover {
-    transform: scale(1.1);
-}
-
-body>main>section>h1 {
+body main section h1 {
     text-align: center;
     text-shadow: 2px 2px 2px #35a9df;
     margin: 2%;
 }
 
-body>main>section>article>h2 {
+body main section article h2 {
     text-align: center;
     margin: 2%;
     font-size: small;
@@ -43,8 +38,7 @@ body>main>section>article>h2 {
     max-width: 100%;
 }
 
-
-body>main>section>article>input[type="button"] {
+body main section ul li article input[type="button"] {
     font-family: 'Arial', Courier, monospace;
     background-color: #0f2f75;
     border: none;
@@ -56,8 +50,8 @@ body>main>section>article>input[type="button"] {
     cursor: pointer;
     border-radius: 20px;
 }
-
-body>main>section>input[type="button"] {
+/*
+body main section article input[type="button"] {
     font-family: 'Arial', Courier, monospace;
     background-color: #0f2f75;
     border: none;
@@ -72,20 +66,20 @@ body>main>section>input[type="button"] {
     padding-right: 10%;
     margin-top: 30%;
 }
-
-body>main>section>article>input[type="button"]:hover {
+*/
+body main section ul li article input[type="button"]:hover {
     background-color: #36a8df;
 }
 
-body>main>section>img {
+body main section img {
     width: 100%;
 }
 
-body>main>section {
+body main section {
     text-align: center;
 }
 
-body>main>section>article {
+body main section ul article {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -94,22 +88,35 @@ body>main>section>article {
     width: 30%;
 }
 
-body>footer {
+body footer {
     background-color: #f5f6fa;
     padding: 10px;
 }
 
-body>footer p {
+body footer p {
     display: flex;
     justify-content: center;
     margin: 0;
 }
 
-body>footer img {
+body footer img {
     width: 5%;
 }
 
-body>nav>img {
+@media screen and (min-width:1024px) {
+    body header {
+        height: 6%;
+    }
+
+    body main section article {
+        width: 12%;
+    }
+    
+    body main section article input[type="button"] {
+        font-size: 12px;
+    }
+}
+body nav img {
     width: 5%;
     margin-bottom: 10%;
     margin-top: 5%;
@@ -117,72 +124,29 @@ body>nav>img {
     border-radius: 5px;
 }
 
-body>nav {
+body nav {
     text-align: center;
 }
 
-body>nav>ul {
+body nav ul {
     list-style-type: none;
     ;
     margin: 0%;
     padding: 0%;
 }
-
-body main article img {
-    width: 100%;
-}
-
-body>nav>ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0f2f75;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    /* Rimuovi i punti elenco */
-}
-
-body>nav>ul>li {
+body nav ul li {
     margin: 0 5px;
 }
-
-body>nav>ul>li a {
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    /* Rimuove la sottolineatura */
-    font-size: 17px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 10%;
-}
-
-body>nav>ul>li>a:hover {
+body nav ul li a:hover {
     background-color: #35a9df;
     color: black;
 }
-@media screen and (min-width:1024px) {
-    body header {
-        height: 6%;
-    }
-
-    body>main>section>article {
-        width: 12%;
-    }
-    body>main>section>article>input[type="button"] {
-        font-size: 12px;
-    }
-}
-
-body>nav>ul>li>button:hover {
+body nav ul li button:hover {
     background-color: #35a9df;
     color: black;
 }
 
-body > nav > ul {
+body nav ul {
     display: flex;
     flex-wrap: wrap; /* Permette alla lista di andare su più righe */
     justify-content: center;
@@ -193,12 +157,8 @@ body > nav > ul {
     list-style-type: none;
 }
 
-body > nav > ul > li {
-    margin: 5px; 
-}
-
-body > nav > ul > li > a, 
-body > nav > ul > li > button {
+body nav ul li a, 
+body nav ul li button {
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -212,4 +172,15 @@ body > nav > ul > li > button {
     /* Rimuove la sottolineatura */
     border-radius: 15px;
 }
+
+body nav ul li {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+body nav ul li:hover {
+    transform: scale(1.1);
+}
+
+
 
