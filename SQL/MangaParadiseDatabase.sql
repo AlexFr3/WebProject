@@ -1,25 +1,33 @@
--- Disabilita i controlli sulle chiavi esterne
-SET FOREIGN_KEY_CHECKS=0;
+-- MySQL Script compatibile con phpMyAdmin
+-- Schema MangaParadise
 
--- Creazione del database MangaParadise
-CREATE SCHEMA IF NOT EXISTS `MangaParadise` DEFAULT CHARACTER SET utf8;
+-- Disattiva temporaneamente i controlli
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;
+SET @OLD_SQL_MODE=@@SQL_MODE;
+SET UNIQUE_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE='';
+
+-- Creazione del database
+CREATE DATABASE IF NOT EXISTS `MangaParadise` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `MangaParadise`;
 
--- Creazione della tabella Utente
+-- Tabella `Utente`
 CREATE TABLE IF NOT EXISTS `Utente` (
   `Email` VARCHAR(64) NOT NULL,
   `Nome` VARCHAR(45) NOT NULL,
   `Cognome` VARCHAR(45) NOT NULL,
-  `Password` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(255) NOT NULL,
   `Venditore` TINYINT(1) NOT NULL,
   PRIMARY KEY (`Email`)
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Notifica
+-- Tabella `Notifica`
 CREATE TABLE IF NOT EXISTS `Notifica` (
   `idNotifica` INT NOT NULL AUTO_INCREMENT,
   `Testo` VARCHAR(150) NOT NULL,
-  `Letta` TINYINT(1),
+  `Letta` TINYINT(1) NULL,
   `User_Email` VARCHAR(64) NOT NULL,
   PRIMARY KEY (`idNotifica`),
   INDEX `fk_Notifica_User_idx` (`User_Email`),
@@ -28,9 +36,9 @@ CREATE TABLE IF NOT EXISTS `Notifica` (
     REFERENCES `Utente` (`Email`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Ordine
+-- Tabella `Ordine`
 CREATE TABLE IF NOT EXISTS `Ordine` (
   `idOrdine` INT NOT NULL AUTO_INCREMENT,
   `Stato` VARCHAR(45) NOT NULL,
@@ -42,9 +50,9 @@ CREATE TABLE IF NOT EXISTS `Ordine` (
     REFERENCES `Utente` (`Email`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Transazione
+-- Tabella `Transazione`
 CREATE TABLE IF NOT EXISTS `Transazione` (
   `Totale` INT NOT NULL,
   `NumeroIdentificativo` VARCHAR(80) NOT NULL,
@@ -55,26 +63,28 @@ CREATE TABLE IF NOT EXISTS `Transazione` (
     REFERENCES `Ordine` (`idOrdine`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Manga
+-- Tabella `Manga`
 CREATE TABLE IF NOT EXISTS `Manga` (
   `idManga` INT NOT NULL AUTO_INCREMENT,
-  `Voto` TINYINT(1),
+  `Voto` TINYINT(1) NULL,
   `Titolo` VARCHAR(80) NOT NULL,
   `Descrizione` VARCHAR(255) NOT NULL,
   `Quantità` INT NOT NULL,
   `Immagine` VARCHAR(255) NOT NULL,
+  `Data_uscita` DATE NOT NULL,
   PRIMARY KEY (`idManga`)
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Dettaglio_Ordine
+-- Tabella `Dettaglio_Ordine`
 CREATE TABLE IF NOT EXISTS `Dettaglio_Ordine` (
   `Manga_idManga` INT NOT NULL,
   `Ordine_idOrdine` INT NOT NULL,
   `Quantità` INT NOT NULL,
   PRIMARY KEY (`Manga_idManga`, `Ordine_idOrdine`),
   INDEX `fk_Manga_has_Ordine_Ordine1_idx` (`Ordine_idOrdine`),
+  INDEX `fk_Manga_has_Ordine_Manga1_idx` (`Manga_idManga`),
   CONSTRAINT `fk_Manga_has_Ordine_Manga1`
     FOREIGN KEY (`Manga_idManga`)
     REFERENCES `Manga` (`idManga`)
@@ -85,27 +95,29 @@ CREATE TABLE IF NOT EXISTS `Dettaglio_Ordine` (
     REFERENCES `Ordine` (`idOrdine`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Genere
+-- Tabella `Genere`
 CREATE TABLE IF NOT EXISTS `Genere` (
   `idGenere` INT NOT NULL AUTO_INCREMENT,
   `Descrizione` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idGenere`)
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Categoria
+-- Tabella `Categoria`
 CREATE TABLE IF NOT EXISTS `Categoria` (
   `idCategoria` INT NOT NULL AUTO_INCREMENT,
   `Descrizione` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCategoria`)
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Manga_has_Categoria
+-- Tabella `Manga_has_Categoria`
 CREATE TABLE IF NOT EXISTS `Manga_has_Categoria` (
   `Manga_idManga` INT NOT NULL,
   `Categoria_idCategoria` INT NOT NULL,
   PRIMARY KEY (`Manga_idManga`, `Categoria_idCategoria`),
+  INDEX `fk_Manga_has_Categoria_Categoria1_idx` (`Categoria_idCategoria`),
+  INDEX `fk_Manga_has_Categoria_Manga1_idx` (`Manga_idManga`),
   CONSTRAINT `fk_Manga_has_Categoria_Manga1`
     FOREIGN KEY (`Manga_idManga`)
     REFERENCES `Manga` (`idManga`)
@@ -116,13 +128,15 @@ CREATE TABLE IF NOT EXISTS `Manga_has_Categoria` (
     REFERENCES `Categoria` (`idCategoria`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Manga_has_Genere
+-- Tabella `Manga_has_Genere`
 CREATE TABLE IF NOT EXISTS `Manga_has_Genere` (
   `Manga_idManga` INT NOT NULL,
   `Genere_idGenere` INT NOT NULL,
   PRIMARY KEY (`Manga_idManga`, `Genere_idGenere`),
+  INDEX `fk_Manga_has_Genere_Genere1_idx` (`Genere_idGenere`),
+  INDEX `fk_Manga_has_Genere_Manga1_idx` (`Manga_idManga`),
   CONSTRAINT `fk_Manga_has_Genere_Manga1`
     FOREIGN KEY (`Manga_idManga`)
     REFERENCES `Manga` (`idManga`)
@@ -133,14 +147,16 @@ CREATE TABLE IF NOT EXISTS `Manga_has_Genere` (
     REFERENCES `Genere` (`idGenere`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Creazione della tabella Carrello_has_Manga
+-- Tabella `Carrello_has_Manga`
 CREATE TABLE IF NOT EXISTS `Carrello_has_Manga` (
   `Utente_Email` VARCHAR(64) NOT NULL,
   `Manga_idManga` INT NOT NULL,
   `Quantità` INT NOT NULL,
   PRIMARY KEY (`Utente_Email`, `Manga_idManga`),
+  INDEX `fk_Utente_has_Manga_Manga1_idx` (`Manga_idManga`),
+  INDEX `fk_Utente_has_Manga_Utente1_idx` (`Utente_Email`),
   CONSTRAINT `fk_Utente_has_Manga_Utente1`
     FOREIGN KEY (`Utente_Email`)
     REFERENCES `Utente` (`Email`)
@@ -151,7 +167,9 @@ CREATE TABLE IF NOT EXISTS `Carrello_has_Manga` (
     REFERENCES `Manga` (`idManga`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-) ENGINE = InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Abilitazione dei controlli sulle chiavi esterne
-SET FOREIGN_KEY_CHECKS=1;
+-- Ripristina i controlli
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
