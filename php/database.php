@@ -14,7 +14,7 @@ class DatabaseHelper
     public function getRandomManga($n)
     {
         $stmt = $this->db->prepare("SELECT Voto, Titolo, Descrizione, Quantità, Immagine, Data_uscita FROM Manga ORDER BY RAND() LIMIT ?");
-        $stmt->bind_param('i', $limit);
+        $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -22,7 +22,7 @@ class DatabaseHelper
     }
     public function getLatestManga($n) {
         $stmt = $this->db->prepare("SELECT Titolo, Immagine, Prezzo FROM Manga ORDER BY Data_uscita DESC LIMIT ?");
-        $stmt->bind_param('i', $limit);
+        $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
     
@@ -31,7 +31,7 @@ class DatabaseHelper
     
     public function getTopRatedManga($n) {
         $stmt = $this->db->prepare("SELECT Titolo, Immagine, Prezzo FROM Manga ORDER BY Voto DESC LIMIT ?");
-        $stmt->bind_param('i', $limit);
+        $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
     
