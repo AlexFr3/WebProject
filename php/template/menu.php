@@ -10,7 +10,7 @@
       <a href="#slide-2"></a>
     </div>
   </div>
-</section><section>
+  <section>
   <h1>Ultime Uscite</h1>
   <ul>
     <?php if (!empty($templateParams["LatestManga"])): ?>
@@ -19,6 +19,7 @@
           <article>
             <img src="../img/Manga/<?= htmlspecialchars($manga['Immagine']) ?>" alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
+            <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p> <!-- Prezzo -->
             <input type="button" value="Aggiungi al carrello" />
           </article>
         </li>
@@ -38,6 +39,7 @@
             <img src="../img/Manga/<?= htmlspecialchars($manga['Immagine']) ?>" alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
             <p>Voto: <?= htmlspecialchars($manga['Voto']) ?>/10</p>
+            <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p> <!-- Prezzo -->
             <input type="button" value="Aggiungi al carrello" />
           </article>
         </li>
