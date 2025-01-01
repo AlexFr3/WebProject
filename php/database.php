@@ -20,7 +20,7 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function getLatestManga($limit = 7) {
+    public function getLatestManga($n) {
         $stmt = $this->db->prepare("SELECT Titolo, Immagine, Prezzo FROM Manga ORDER BY Data_uscita DESC LIMIT ?");
         $stmt->bind_param('i', $limit);
         $stmt->execute();
