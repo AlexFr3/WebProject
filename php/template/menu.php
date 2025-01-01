@@ -19,7 +19,7 @@
           <article>
             <img src="../img/Manga/<?= htmlspecialchars($manga['Immagine']) ?>" alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
-            <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p> <!-- Prezzo -->
+            <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p> 
             <input type="button" value="Aggiungi al carrello" />
           </article>
         </li>
@@ -39,7 +39,7 @@
             <img src="../img/Manga/<?= htmlspecialchars($manga['Immagine']) ?>" alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
             <p>Voto: <?= htmlspecialchars($manga['Voto']) ?>/10</p>
-            <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p> <!-- Prezzo -->
+            <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p> 
             <input type="button" value="Aggiungi al carrello" />
           </article>
         </li>
