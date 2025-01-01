@@ -1,4 +1,4 @@
--- Popolazione del database
+-- Eliminazione dati esistenti
 DELETE FROM Manga_has_Genere;
 DELETE FROM Manga_has_Categoria;
 DELETE FROM Utente;
@@ -16,7 +16,9 @@ VALUES
 INSERT INTO `Manga` (`Voto`, `Titolo`, `Descrizione`, `Quantità`, `Immagine`, `Data_uscita`)
 VALUES 
 (5, 'Naruto - capitolo 1', 'Naruto è una serie manga che racconta la storia di un giovane ninja che sogna di diventare Hokage.', 50, 'WEBPROJECT/img/Manga/Naruto_vol_1.jpg', '1999-09-21'),
-(5, 'One Piece - capitolo 1', 'One Piece segue le avventure di Monkey D. Rufy e del suo equipaggio alla ricerca del leggendario tesoro One Piece.', 30, 'WEBPROJECT/img/Manga/One_Piece_vol_1.jpg', '1997-07-22');
+(5, 'Naruto - capitolo 2', 'Secondo capitolo della storia di Naruto in cui affronta nuove sfide.', 50, 'WEBPROJECT/img/Manga/Naruto_vol_2.jpg', '1999-10-01'),
+(5, 'One Piece - capitolo 1', 'One Piece segue le avventure di Monkey D. Rufy e del suo equipaggio alla ricerca del leggendario tesoro One Piece.', 30, 'WEBPROJECT/img/Manga/One_Piece_vol_1.jpg', '1997-07-22'),
+(5, 'One Piece - capitolo 2', 'Secondo capitolo delle avventure di Rufy e del suo equipaggio.', 30, 'WEBPROJECT/img/Manga/One_Piece_vol_2.jpg', '1997-08-01');
 
 -- Inserimento Generi
 INSERT INTO `Genere` (`Descrizione`)
@@ -39,12 +41,17 @@ INSERT INTO `Manga_has_Genere` (`Manga_idManga`, `Genere_idGenere`)
 VALUES 
 ((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Naruto - capitolo 1'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Azione')),
 ((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Naruto - capitolo 1'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Drammatico')),
-((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Naruto - capitolo 1'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Fantasy')),
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Naruto - capitolo 2'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Azione')),
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Naruto - capitolo 2'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Fantasy')),
 ((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 1'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Avventura')),
-((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 1'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Commedia'));
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 1'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Commedia')),
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 2'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Avventura')),
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 2'), (SELECT `idGenere` FROM `Genere` WHERE `Descrizione` = 'Commedia'));
 
 -- Associazione di Manga alle Categorie
 INSERT INTO `Manga_has_Categoria` (`Manga_idManga`, `Categoria_idCategoria`)
 VALUES 
 ((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Naruto - capitolo 1'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen')),
-((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 1'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen'));
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Naruto - capitolo 2'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen')),
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 1'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen')),
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 2'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen'));
