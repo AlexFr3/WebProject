@@ -11,7 +11,7 @@ VALUES
 (5, 'Naruto - capitolo 1', 'Naruto è una serie manga che racconta la storia di un giovane ninja che sogna di diventare Hokage.', 50, 'Naruto_vol_1.jpg', '1999-09-21', 15.99),
 (5, 'Naruto - capitolo 2', 'Secondo capitolo della storia di Naruto in cui affronta nuove sfide.', 50, 'Naruto_vol_2.jpg', '1999-10-01', 16.99),
 (5, 'One Piece - capitolo 1', 'One Piece segue le avventure di Monkey D. Rufy e del suo equipaggio alla ricerca del leggendario tesoro One Piece.', 30, 'One_Piece_vol_1.jpg', '1997-07-22', 18.50),
-(5, 'One Piece - capitolo 2', 'Secondo capitolo delle avventure di Rufy e del suo equipaggio.', 30, 'One_Piece_vol_2.jpg', '1997-08-01', 18.50);
+(5, 'One Piece - capitolo 2', 'Secondo capitolo delle avventure di Rufy e del suo equipaggio.', 30, 'One_Piece_vol_2.png', '1997-08-01', 18.50);
 
 -- Inserimento Generi
 INSERT INTO `Genere` (`Descrizione`)
