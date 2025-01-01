@@ -20,6 +20,24 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function getLatestManga($limit = 7) {
+        $stmt = $this->db->prepare("SELECT Titolo, Immagine, Prezzo FROM Manga ORDER BY Data_uscita DESC LIMIT ?");
+        $stmt->bind_param('i', $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    public function getTopRatedManga($n) {
+        $stmt = $this->db->prepare("SELECT Titolo, Immagine, Prezzo FROM Manga ORDER BY Voto DESC LIMIT ?");
+        $stmt->bind_param('i', $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
 
     public function getCategories()
     {
