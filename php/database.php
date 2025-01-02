@@ -195,5 +195,31 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function registerNewUser($nome, $cognome, $email, $password){
+        $query = "INSERT INTO `Utente` (`Email`, `Nome`, `Cognome`, `Password`, `Venditore`) VALUES(?, ?, ?, ?, 0)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssss', $email, $nome, $cognome, $password);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function existsUserWithEmail($email){
+        $query = "SELECT email, venditore, nome, cognome FROM utente WHERE email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        if(count($result)==0){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
 ?>

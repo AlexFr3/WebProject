@@ -17,6 +17,9 @@ if(isUserLoggedIn()){
 } else{
     $templateParams["titolo"] = "MangaParadise | Login";
     $templateParams['nome'] = "login-form.php";
+    if(isset($_GET["msg"])){
+        $templateParams["errorelogin"] = $_GET["msg"];
+    }
 }
 require 'template/base.php';
 ?>
