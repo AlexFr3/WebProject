@@ -55,6 +55,7 @@ body main section article h2 {
 }
 
 body main form {
+  height: 100%;
   padding-left: 0;
   margin: 20px 10%;
   width: 80%;
@@ -70,7 +71,8 @@ body main form h1{
 }
 
 body main form ul li {
-  margin: 10px 0;
+  margin: 10px 10%;
+  text-align: left;
 }
 
 body main form ul{
@@ -79,7 +81,10 @@ body main form ul{
 
 body main form ul li:last-child {
   margin-bottom: 20px;
+  margin-left: 0;
+  margin-right: 0;
   width: 100%;
+  text-align: center;
 }
 
 body main form ul li:last-child input{
@@ -89,8 +94,9 @@ body main form ul li:last-child input{
 }
 
 form label{
+  width: 10%;
   font-weight: bold;
-  margin-right: 5%;
+  margin-right: 10%;
 }
 
 body main form input {
