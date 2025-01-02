@@ -184,11 +184,11 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function checkLogin($username, $password)
+    public function checkLogin($email, $password)
     {
-        $query = "SELECT idautore, username, nome FROM autore WHERE attivo=1 AND username = ? AND password = ?";
+        $query = "SELECT email, venditore, nome, cognome FROM utente WHERE email = ? AND password = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $username, $password);
+        $stmt->bind_param('ss', $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 

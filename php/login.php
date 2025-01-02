@@ -18,6 +18,5 @@ if(isUserLoggedIn()){
     $templateParams["titolo"] = "MangaParadise | Login";
     $templateParams['nome'] = "login-form.php";
 }
-
 require 'template/base.php';
 ?>
