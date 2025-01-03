@@ -2,13 +2,19 @@
 require_once 'bootstrap.php';
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
-    $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
-    if(count($login_result)==0){
-        //Login fallito
-        $templateParams["errorelogin"] = "Errore! Controllare username o password!";
-    }
-    else{
-        registerLoggedUser($login_result[0]);
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    if(!$dbh->existsUserWithEmail($email)){
+        //account non esistente
+        $templateParams["errorelogin"] = "Errore! Non è stato possibile trovare un utente con questa mail!";
+    } else{
+        $login_result = $dbh->checkLogin($email, $password);
+        if(count($login_result)==0){
+            //password errata
+            $templateParams["errorelogin"] = "Errore! La password non è corretta!";
+        } else{
+            registerLoggedUser($login_result[0]);
+        }
     }
 }
 
