@@ -304,51 +304,46 @@ body nav ul li button {
 /*end navbar*/
 
 /* Slider */
-section > div {
+section > section {
   position: relative;
   max-width: 100%;
   margin: 0 auto;
+  overflow: hidden; /* Nascondi le immagini che escono dal contenitore */
 }
 
-section > div > div {
+section > section > section:first-of-type {
   display: flex;
-  overflow-x: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
-  border-radius: 0.5rem;
-  animation: sliderAnimation 9s infinite;
-  width: 100%;
+  transition: transform 0.5s ease-in-out; /* Transizione per lo slider */
+  width: 200%; /* Impostiamo la larghezza al doppio per ospitare tutte le immagini */
 }
 
-section img {
-  flex: 1 0 100%;
-  scroll-snap-type: start;
-  object-fit: cover;
-  width: 100%;
+section > section > section:first-of-type img {
+  width: 100%; /* Ogni immagine occuperà il 100% della larghezza del contenitore */
+  object-fit: cover; /* Le immagini si adattano allo spazio senza deformarsi */
 }
 
-section > div > div + div {
+section > section > section:last-of-type {
   display: flex;
-  column-gap: 1rem;
+  justify-content: center; /* Centra i dot per la navigazione */
   position: absolute;
   bottom: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-  justify-content: center; /* centra i dot per la navigazione*/
+  column-gap: 1rem;
 }
 
-section > div > div + div a {
+section > section > section:last-of-type a {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
   background-color: #fff;
   opacity: 0.75;
-  transition: opacity ease 0.25s;
+  transition: opacity 0.25s ease;
 }
 
-section > div > div + div a:hover {
+section > section > section:last-of-type a:hover {
   opacity: 1;
 }
+
 /* end slider */
