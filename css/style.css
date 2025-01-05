@@ -308,23 +308,25 @@ section > section {
   position: relative;
   max-width: 100%;
   margin: 0 auto;
-  overflow: hidden; /* Nascondi le immagini che escono dal contenitore */
+  overflow: hidden; 
 }
 
 section > section > section:first-of-type {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* Transizione per lo slider */
-  width: 200%; /* Impostiamo la larghezza al doppio per ospitare tutte le immagini */
+  scroll-snap-type: x mandatory; 
+  scroll-behavior: smooth; 
+  width: 100%; /
 }
 
 section > section > section:first-of-type img {
-  width: 100%; /* Ogni immagine occuperà il 100% della larghezza del contenitore */
-  object-fit: cover; /* Le immagini si adattano allo spazio senza deformarsi */
+  width: 100%; 
+  object-fit: cover; 
+  scroll-snap-align: start; 
 }
 
 section > section > section:last-of-type {
   display: flex;
-  justify-content: center; /* Centra i dot per la navigazione */
+  justify-content: center;
   position: absolute;
   bottom: 1.25rem;
   left: 50%;
@@ -345,5 +347,4 @@ section > section > section:last-of-type a {
 section > section > section:last-of-type a:hover {
   opacity: 1;
 }
-
 /* end slider */
