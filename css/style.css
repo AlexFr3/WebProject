@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+#customRange2 {
+  width: 30%;
+}
+
 header {
   border-bottom: 1px solid #d6d4d4;
 }

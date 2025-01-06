@@ -11,6 +11,16 @@ class DatabaseHelper
         }
     }
 
+    public function getAllManga()
+    {
+        $stmt = $this->db->prepare("SELECT Voto, Titolo, Descrizione, Quantità, Immagine, Data_uscita FROM Manga");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getRandomManga($n)
     {
         $stmt = $this->db->prepare("SELECT Voto, Titolo, Descrizione, Quantità, Immagine, Data_uscita FROM Manga ORDER BY RAND() LIMIT ?");
