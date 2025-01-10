@@ -240,7 +240,7 @@ body main article img {
   width: 100%;
 }
 
-body main ul li:hover {
+body main ul li article:hover {
   background-color: #f5f5f5;
 }
 

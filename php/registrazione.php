@@ -16,7 +16,7 @@
             } else if(empty($password)){
                 $templateParams["erroreregistrazione"] = "La password non può essere vuota";
             } else if(strlen($password) < 8){
-                $templateParams["erroreregistrazione"] = "La password deve econtenere almeno 8 caratteri";
+                $templateParams["erroreregistrazione"] = "La password deve contenere almeno 8 caratteri";
             } else if($password != $confPassword){
                 $templateParams["erroreregistrazione"] = "Le password non corrispondono";
             } else if($dbh->existsUserWithEmail($email)){
