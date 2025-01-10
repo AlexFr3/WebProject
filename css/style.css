@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-#customRange2 {
-  width: 30%;
-}
-
 header {
   border-bottom: 1px solid #d6d4d4;
 }
@@ -306,55 +302,3 @@ body nav ul li button {
   border-radius: 15px;
 }
 /*end navbar*/
-
-form.p-4.border.rounded.shadow-sm {
-  float: left;
-  text-align: left;
-  width: 30%;
-  padding: 0% !important;
-  margin: 0% !important;
-  
-}
-
-body main form.p-4.border.rounded.shadow-sm ul li:last-child {
-  width: 10% ;
-  padding: 0% ;
-  text-align: left;
-  margin-left: 10%;
-}
-body main section.container.mt-4 {
-  margin: 0%;
-  padding: 0%;
-}
-
-form.p-4.border.rounded.shadow-sm input#priceRange {
-  width: 800%;  /* Imposta la larghezza del range per occupare tutta la larghezza disponibile */
-  margin: 10px 0; /* Distanza tra gli altri elementi */
-}
-
-
-
-body main form.p-4.border.rounded.shadow-sm ul li:last-child input {
-  width: 20px; /* Imposta una larghezza fissa */
-  height: 20px; /* Imposta un'altezza fissa */
-  padding: 0;  /* Rimuove il padding */
-  margin: 0;   /* Rimuove il margine */
-  box-sizing: border-box;  /* Garantisce che il padding non influisca sulla larghezza */
-}
-
-form.p-4.border.rounded.shadow-sm ul {
-  display: flex;
-  text-align: left;
-  flex-direction: column;  /* Dispone gli elementi in colonna */
-  padding-left: 0;  /* Rimuove il padding di default */
-  margin: 0;  /* Rimuove il margine di default */
-}
-
-/* Imposta la larghezza e il padding per i checkbox */
-form.p-4.border.rounded.shadow-sm ul li input[type="checkbox"] {
-  width: 20px; /* Imposta una larghezza fissa */
-  height: 20px; /* Imposta un'altezza fissa */
-  padding: 0;  /* Rimuove il padding */
-  margin: 0;   /* Rimuove il margine */
-  box-sizing: border-box;  /* Garantisce che il padding non influisca sulla larghezza */
-}
