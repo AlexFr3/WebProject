@@ -2,6 +2,7 @@
 require_once 'bootstrap.php';
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
+    unset($_GET["messaggiologin"]);
     $email = $_POST["email"];
     $password = $_POST["password"];
     if(!$dbh->existsUserWithEmail($email)){

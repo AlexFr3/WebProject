@@ -1,7 +1,7 @@
-        <form action="#" method="POST">
+        <form action="registrazione.php" method="POST">
         <h1>Registrazione</h1>
         <?php if(isset($templateParams["erroreregistrazione"])): ?>
-        <p><?php echo $templateParams["erroreregistrazione"]; ?></p>
+            <div class="alert alert-danger" role="alert"><p><?php echo $templateParams["erroreregistrazione"]; ?></p></div>
         <?php endif; ?>
         <ul>
             <li>
