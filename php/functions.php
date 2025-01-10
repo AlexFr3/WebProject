@@ -20,6 +20,13 @@ function registerLoggedUser($user){
     $_SESSION["cognome"] = $user["cognome"];
 }
 
+function unlogUser(){
+    unset($_SESSION["email"]);
+    unset($_SESSION["venditore"]);
+    unset($_SESSION["nome"]);
+    unset($_SESSION["cognome"]);
+}
+
 function getEmptyArticle(){
     return array("idarticolo" => "", "titoloarticolo" => "", "imgarticolo" => "", "testoarticolo" => "", "anteprimaarticolo" => "", "categorie" => array());
 }

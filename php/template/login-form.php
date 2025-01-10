@@ -1,7 +1,7 @@
         <form action="#" method="POST">
         <h1>Login</h1>
-        <?php if(isset($templateParams["errorelogin"])): ?>
-        <p><?php echo $templateParams["errorelogin"]; ?></p>
+        <?php if(isset($templateParams["messaggiologin"])): ?>
+        <p><?php echo $templateParams["messaggiologin"]; ?></p>
         <?php endif; ?>
         <ul>
             <li>

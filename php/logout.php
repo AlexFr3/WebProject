@@ -1,6 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
+/*
 if(isset($_POST["email"]) && isset($_POST["password"])){
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -17,15 +18,12 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
         }
     }
 }
-
-if(isUserLoggedIn()){
+*/
+if(!isUserLoggedIn()){
     header("location: profilo.php");
 } else{
-    $templateParams["titolo"] = "MangaParadise | Login";
-    $templateParams['nome'] = "login-form.php";
-    if(isset($_GET["msg"])){
-        $templateParams["messaggiologin"] = $_GET["msg"];
-    }
+    unlogUser();
+    header("location: login.php?msg=Logout+eseguito+con+successo");
 }
 require 'template/base.php';
 ?>
