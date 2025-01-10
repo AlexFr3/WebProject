@@ -114,7 +114,9 @@ form input:focus {
   background-color: #eaf4ff;
 }
 
-body main section article input[type="button"], body main form input[type="submit"] {
+
+
+body main section article input[type="button"], body main form input[type="submit"]  {
   font-family: "Arial", Courier, monospace;
   background-color: #0f2f75;
   border: none;
@@ -122,6 +124,29 @@ body main section article input[type="button"], body main form input[type="submi
   padding: 6px 12px;
   text-align: center;
   font-size: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 2% 1px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+body main footer{
+  text-align: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+body main > footer a{
+  text-decoration: none;
+  font-family: "Arial", Courier, monospace;
+  background-color: #0f2f75;
+  border: none;
+  color: white;
+  padding: 6px 5%;
+  text-align: center;
+  font-size: 25px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -146,7 +171,9 @@ body main section ul li input[type="button"] {
   padding-right: 10%;
 }
 
-body main section ul li article input[type="button"]:hover {
+body main section ul li article input[type="button"]:hover, 
+body main > footer a:hover,
+body main form input[type="submit"]:hover {
   background-color: #36a8df;
 }
 
