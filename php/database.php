@@ -13,7 +13,7 @@ class DatabaseHelper
 
     public function getAllManga()
     {
-        $stmt = $this->db->prepare("SELECT Voto, Titolo, Descrizione, Quantità, Immagine, Data_uscita FROM Manga");
+        $stmt = $this->db->prepare("SELECT Prezzo, Voto, Titolo, Descrizione, Quantità, Immagine, Data_uscita FROM Manga");
         $stmt->execute();
         $result = $stmt->get_result();
 
