@@ -132,6 +132,11 @@ body main section article input[type="button"], body main form input[type="submi
   border-radius: 20px;
 }
 
+body main section article input[type="button"]:disabled, body main section article input[type="button"]:disabled:hover{
+  background-color: #797979;
+  cursor: auto;
+}
+
 body main footer{
   text-align: center;
   width: 100%;
