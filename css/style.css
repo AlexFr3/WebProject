@@ -34,7 +34,7 @@ body main section h1 {
   margin: 2%;
 }
 
-body main section li {
+body  main  section  li {
   display: inline-block;
   width: 30%;
 }
@@ -70,7 +70,7 @@ body main form h1{
   margin: 20px 0;
 }
 
-body main form ul li {
+body  main  form  ul  li {
   margin: 10px 10%;
   text-align: left;
 }
@@ -79,7 +79,7 @@ body main form ul{
   padding: 0;
 }
 
-body main form ul li:last-child {
+body > main > form > ul > li:last-child {
   margin-bottom: 20px;
   margin-left: 0;
   margin-right: 0;
@@ -87,7 +87,7 @@ body main form ul li:last-child {
   text-align: center;
 }
 
-body main form ul li:last-child input{
+body > main > form > ul > li:last-child input{
   padding: 10px 20%;
   width: 60%;
   font-size: 18px;
@@ -99,7 +99,7 @@ form label{
   margin-right: 10%;
 }
 
-body main form input {
+body > main > form > ul > li > input {
   width: 70%;
   padding: 10px 5%;
   border: 1px solid #007BFF;
@@ -188,6 +188,7 @@ body main section li {
 
 body main section {
   text-align: center;
+  margin-bottom: 5%;
 }
 
 body main section article {
@@ -328,4 +329,38 @@ body nav ul li button {
   /* Rimuove la sottolineatura */
   border-radius: 15px;
 }
-/*end navbar*/
+
+.filter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Sfondo semi-trasparente */
+  display: none; /* Nasconde la sovraimpressione inizialmente */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.filter-form {
+  background: #eaf4ff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  flex-direction: column;
+  max-height: 100vh; 
+  overflow-y: auto; /* Scroll verticale se il contenuto supera l'altezza */
+}
+
+.filter-form ul {
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  flex-direction: column;
+}
+
+.blur {
+  filter: blur(20px); 
+}
