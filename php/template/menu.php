@@ -32,7 +32,13 @@
               alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
             <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
-            <input type="button" value="Aggiungi al carrello" />
+            <input type="button" value="<?php if($manga['Quantità'] > 0){
+              echo('Aggiungi al carrello');
+            } else{
+              echo('Non disponibile');
+            }?>"  <?php if($manga['Quantità'] <= 0) {
+              echo("disabled");
+            }?>/>
           </article>
         </li>
       <?php endforeach; ?>
@@ -53,7 +59,13 @@
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
             <p>Voto: <?= htmlspecialchars($manga['Voto']) ?>/10</p>
             <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
-            <input type="button" value="Aggiungi al carrello" />
+            <input type="button" value="<?php if($manga['Quantità'] > 0){
+              echo('Aggiungi al carrello');
+            } else{
+              echo('Non disponibile');
+            }?>"  <?php if($manga['Quantità'] <= 0) {
+              echo("disabled");
+            }?>/>
           </article>
         </li>
       <?php endforeach; ?>
