@@ -284,17 +284,17 @@ body nav ul li a:hover {
 }
 
 @media screen and (min-width: 1024px) {
-  body header {
+  body > header {
     height: 6%;
   }
 
-  body main section li {
+  body > main > section > li {
     width: 12%;
     margin-bottom: 30px;
     margin-right: 3%;
   }
 
-  body main section article input[type="button"] {
+  body > main > section > article > input[type="button"] {
     font-size: 12px;
   }
 }
@@ -353,7 +353,7 @@ body nav ul li button {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 100%;
+  width: 30%;
   flex-direction: column;
   max-height: 100vh; 
   overflow-y: auto; /* Scroll verticale se il contenuto supera l'altezza */
