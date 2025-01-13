@@ -70,34 +70,47 @@ body main form h1{
   margin: 20px 0;
 }
 
-body > main > form > ul > li {
-  margin: 10px 10%;
+body > main > form > ul > li>label {
   text-align: left;
 }
-
-body main form ul{
+body > main > form > ul > li> input[type="type"]{
+  max-width: 10%;
+}
+body > main > form > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
   padding: 0;
+  margin: 0;
 }
 
-body > main > form > ul > li:last-child {
-  margin-bottom: 20px;
-  margin-left: 0;
-  margin-right: 0;
+body > main > form > ul > li {
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
+  margin-bottom: 20px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
   width: 100%;
+}
+
+body > main > form > ul > li > label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  width: 100%; 
   text-align: center;
 }
 
-body > main > form > ul > li:last-child input{
-  padding: 10px 20%;
-  width: 60%;
-  font-size: 18px;
+body > main > form > ul > li > input {
+  width: 100%; 
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; 
 }
 
-form > label{
-  width: 10%;
-  font-weight: bold;
-  margin-right: 10%;
-}
 
 body > main > form > ul > li > input {
   width: 70%;
@@ -123,13 +136,15 @@ body main section article input[type="button"], body main form input[type="submi
   color: white;
   padding: 6px 12px;
   text-align: center;
-  font-size: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  width: 100%;
+  font-size: 14px;
   margin: 2% 1px;
   cursor: pointer;
   border-radius: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+  overflow: hidden;
+  width: min-content;
 }
 
 body main section article input[type="button"]:disabled, body main section article input[type="button"]:disabled:hover{
@@ -174,6 +189,7 @@ body main section ul li input[type="button"] {
   border-radius: 20px;
   padding-left: 10%;
   padding-right: 10%;
+  overflow: hidden;
 }
 
 body main section ul li article input[type="button"]:hover, 
