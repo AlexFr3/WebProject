@@ -70,7 +70,7 @@ body main form h1{
   margin: 20px 0;
 }
 
-body  main  form  ul  li {
+body > main > form > ul > li {
   margin: 10px 10%;
   text-align: left;
 }
@@ -93,7 +93,7 @@ body > main > form > ul > li:last-child input{
   font-size: 18px;
 }
 
-form label{
+form > label{
   width: 10%;
   font-weight: bold;
   margin-right: 10%;
@@ -288,10 +288,18 @@ body nav ul li a:hover {
     height: 6%;
   }
 
-  body > main > section > li {
+  body > main > section li {
     width: 12%;
     margin-bottom: 30px;
     margin-right: 3%;
+  }
+  body > main > section > form  li {
+    width: 80%;
+    margin-bottom: 1%;
+    margin-right: 1%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   body > main > section > article > input[type="button"] {
@@ -350,10 +358,11 @@ body nav ul li button {
 
 .filter-form {
   background: #eaf4ff;
-  padding: 20px;
+  margin-top: 1%;
+  margin-bottom: 1%;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 30%;
+  width: 100%;
   flex-direction: column;
   max-height: 100vh; 
   overflow-y: auto; /* Scroll verticale se il contenuto supera l'altezza */
