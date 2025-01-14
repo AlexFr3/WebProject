@@ -43,7 +43,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
-  <script src="index.js" type="text/javascript"></script>
+  <?php if(isset($templateParams["scripts"])): ?>
+    <?php foreach($templateParams["scripts"] as $script): ?>
+      <script src="<?php echo("../js/".$script); ?>" type="text/javascript"></script>
+    <?php endforeach; ?>
+  <?php endif; ?>
+  
 </body>
 
 </html>
