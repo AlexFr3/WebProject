@@ -92,7 +92,7 @@ overlay.addEventListener('click', (e) => {
               alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
             <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
-            <input type="button" value="Aggiungi al carrello" />
+            <input class="button" type="button" value="Aggiungi al carrello" />
           </article>
         </li>
       <?php endforeach; ?>

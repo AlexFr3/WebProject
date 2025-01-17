@@ -73,9 +73,7 @@ body main form h1{
 body > main > form > ul > li>label {
   text-align: left;
 }
-body > main > form > ul > li> input[type="type"]{
-  max-width: 10%;
-}
+
 body > main > form > ul {
   display: flex;
   flex-direction: column;
@@ -127,26 +125,6 @@ form input:focus {
   background-color: #eaf4ff;
 }
 
-
-
-body main section article input[type="button"], body main form input[type="submit"]  {
-  font-family: "Arial", Courier, monospace;
-  background-color: #0f2f75;
-  border: none;
-  color: white;
-  padding: 6px 12px;
-  text-align: center;
-  width: 100%;
-  font-size: 14px;
-  margin: 2% 1px;
-  cursor: pointer;
-  border-radius: 20px;
-  padding-left: 10%;
-  padding-right: 10%;
-  overflow: hidden;
-  width: min-content;
-}
-
 body main section article input[type="button"]:disabled, body main section article input[type="button"]:disabled:hover{
   background-color: #797979;
   cursor: auto;
@@ -174,8 +152,8 @@ body main > footer a{
   cursor: pointer;
   border-radius: 20px;
 }
-
-body main section ul li input[type="button"] {
+/*button*/
+.button{
   font-family: "Arial", Courier, monospace;
   background-color: #0f2f75;
   border: none;
@@ -190,14 +168,14 @@ body main section ul li input[type="button"] {
   padding-left: 10%;
   padding-right: 10%;
   overflow: hidden;
+  width: min-content;
 }
 
-body main section ul li article input[type="button"]:hover, 
-body main > footer a:hover,
-body main form input[type="submit"]:hover {
+.button:hover, 
+body main > footer a:hover{
   background-color: #36a8df;
 }
-
+/*end button*/
 body main section img {
   width: 100%;
 }
@@ -261,7 +239,7 @@ body main ul {
 body main article img {
   width: 100%;
 }
-
+/*modificare con dark mode */
 body main ul li article:hover {
   background-color: #f5f5f5;
 }
