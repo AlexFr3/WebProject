@@ -1,9 +1,8 @@
 // Mantieni il tema all'avvio della pagina
 document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme') || 'white'; // Ottieni il tema salvato o usa 'white' di default
+  document.documentElement.setAttribute('data-bs-theme', savedTheme);  
   document.documentElement.classList.add(savedTheme);
-  document.documentElement.classList.add(savedTheme);
-
   const logo = document.getElementById("logo");
   logo.src = savedTheme === 'dark' ? "../img/logoDark.png" : "../img/logoLight.png";
 });
