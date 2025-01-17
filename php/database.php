@@ -11,6 +11,24 @@ class DatabaseHelper
         }
     }
 
+    public function getAllGenres() {
+
+        $stmt = $this -> db -> prepare("SELECT Descrizione FROM Genere");
+        $stmt -> execute();
+        $result = $stmt -> get_result();
+
+        return $result -> fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllCategories() {
+
+        $stmt = $this -> db -> prepare("SELECT Descrizione FROM Categoria");
+        $stmt -> execute();
+        $result = $stmt -> get_result();
+
+        return $result -> fetch_all(MYSQLI_ASSOC);
+    }
+    /*da modificare*/
     public function getAllManga()
     {
         $stmt = $this->db->prepare("SELECT Prezzo, Voto, Titolo, Descrizione, Quantità, Immagine, Data_uscita FROM Manga");

@@ -21,7 +21,7 @@
       <li><a href="profilo.php">Profilo</a></li>
       <li><a href="shoppingCartIndex.php">Carrello</a></li>
       <li>
-        <button id="btnSwitch">🌙 Dark Mode</button>
+        <button id="darkModeButton">🌙 Dark Mode</button>
       </li>
     </ul>
   </nav>
@@ -37,6 +37,7 @@
       Manga Paradise Via dell'Università, 50, Cesena<img src="../img/Logo.png" alt="Logo" />
     </p>
   </footer>
+  
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>

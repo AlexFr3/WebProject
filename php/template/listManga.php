@@ -13,18 +13,12 @@
     <!-- Categoria -->
     <h4 class="mb-3">Categoria</h4>
     <ul class="list-unstyled">
-      <li>
-        <input class="form-check-input" type="checkbox" id="seinen" name="categories[]" value="Seinen" />
-        <label class="form-check-label" for="seinen">Seinen</label>
-      </li>
-      <li>
-        <input class="form-check-input" type="checkbox" id="shounen" name="categories[]" value="Shounen" />
-        <label class="form-check-label" for="shounen">Shounen</label>
-      </li>
-      <li>
-        <input class="form-check-input" type="checkbox" id="manhwa" name="categories[]" value="Manhwa" />
-        <label class="form-check-label" for="manhwa">Manhwa</label>
-      </li>
+    <?php foreach ($templateParams["Categories"] as $category): ?>
+        <li>
+        <input class="form-check-input" type="checkbox" id="<?= htmlspecialchars($category['Descrizione']) ?>" name="categories[]" value="<?= htmlspecialchars($category['Descrizione']) ?>" />
+        <label class="form-check-label" for="<?= htmlspecialchars($category['Descrizione']) ?>"><?= htmlspecialchars($category['Descrizione']) ?></label>
+        </li>
+      <?php endforeach; ?>
     </ul>
 
     <!-- Prezzo -->
@@ -50,26 +44,12 @@
     <!-- Genere -->
     <h4 class="mt-4 mb-3">Genere</h4>
     <ul class="list-unstyled">
-      <li>
-        <input class="form-check-input" type="checkbox" id="azione" name="genres[]" value="Azione" />
-        <label class="form-check-label" for="azione">Azione</label>
-      </li>
-      <li>
-        <input class="form-check-input" type="checkbox" id="drammatico" name="genres[]" value="Drammatico" />
-        <label class="form-check-label" for="drammatico">Drammatico</label>
-      </li>
-      <li>
-        <input class="form-check-input" type="checkbox" id="avventura" name="genres[]" value="Avventura" />
-        <label class="form-check-label" for="avventura">Avventura</label>
-      </li>
-      <li>
-        <input class="form-check-input" type="checkbox" id="fantasy" name="genres[]" value="Fantasy" />
-        <label class="form-check-label" for="fantasy">Fantasy</label>
-      </li>
-      <li>
-        <input class="form-check-input" type="checkbox" id="commedia" name="genres[]" value="Commedia" />
-        <label class="form-check-label" for="commedia">Commedia</label>
-      </li>
+    <?php foreach ($templateParams["Genres"] as $type): ?>
+        <li>
+        <input class="form-check-input" type="checkbox" id="<?= htmlspecialchars($type['Descrizione']) ?>" name="genres[]" value="<?= htmlspecialchars($type['Descrizione']) ?>" />
+        <label class="form-check-label" for="<?= htmlspecialchars($type['Descrizione']) ?>"><?= htmlspecialchars($type['Descrizione']) ?></label>
+        </li>
+      <?php endforeach; ?>
     </ul>
 
     
