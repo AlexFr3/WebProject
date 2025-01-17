@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <img src="../img/logoLight.png" alt="Logo" />
+    <img src="../img/logoLight.png" id="logo" alt="Logo" />
   </header>
   <nav>
     <ul>
