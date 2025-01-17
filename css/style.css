@@ -1,3 +1,8 @@
+:root {
+  --button-color: #0f2f75;
+  --font-size: 14px;
+  --color-hover:#36a8df;
+}
 * {
   margin: 0;
   padding: 0;
@@ -155,13 +160,13 @@ body main > footer a{
 /*button*/
 .button{
   font-family: "Arial", Courier, monospace;
-  background-color: #0f2f75;
+  background-color: var(--button-color);
   border: none;
   color: white;
   padding: 6px 12px;
   text-align: center;
   width: 100%;
-  font-size: 14px;
+  font-size: var(--font-size);
   margin: 2% 1px;
   cursor: pointer;
   border-radius: 20px;
@@ -173,7 +178,7 @@ body main > footer a{
 
 .button:hover, 
 body main > footer a:hover{
-  background-color: #36a8df;
+  background-color: var(--color-hover);
 }
 /*end button*/
 body main section img {
@@ -273,7 +278,7 @@ body nav ul li a {
 }
 
 body nav ul li a:hover {
-  background-color: #35a9df;
+  background-color: var(--color-hover);
   color: black;
 }
 
@@ -302,7 +307,7 @@ body nav ul li a:hover {
 }
 /*navbar*/
 body nav ul li button:hover {
-  background-color: #35a9df;
+  background-color: var(--color-hover);
   color: black;
 }
 
