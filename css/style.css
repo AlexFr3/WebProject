@@ -2,27 +2,20 @@
   --button-color: #0f2f75;
   --font-size: 14px;
   --color-hover:#36a8df;
+  --footer-color:#f5f6fa;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-header {
-  border-bottom: 1px solid #d6d4d4;
-}
-
-body header {
-  height: 10%;
-}
-
+/*img logo*/
 body header img {
   width: 30%;
   margin-left: 35%;
   margin-right: 35%;
   margin-bottom: 0%;
-}
+}/*logo*/
 
 body nav ul li {
   cursor: pointer;
@@ -129,12 +122,14 @@ form input:focus {
   outline: none;
   background-color: #eaf4ff;
 }
-
+/*disable article*/
 body main section article input[type="button"]:disabled, body main section article input[type="button"]:disabled:hover{
   background-color: #797979;
   cursor: auto;
 }
+/*end disable article*/
 
+/*footer*/
 body main footer{
   text-align: center;
   width: 100%;
@@ -157,6 +152,21 @@ body main > footer a{
   cursor: pointer;
   border-radius: 20px;
 }
+body footer {
+  background-color: var(--footer-color);
+  padding: 10px;
+}
+
+body footer p {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+body footer img {
+  width: 5%;
+}
+/*end footer*/
 /*button*/
 .button{
   font-family: "Arial", Courier, monospace;
@@ -202,21 +212,6 @@ body main section article {
   flex-direction: column;
   margin: 0% 10px 10px 0%;
   width: 30%;
-}
-
-body footer {
-  background-color: #f5f6fa;
-  padding: 10px;
-}
-
-body footer p {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-
-body footer img {
-  width: 5%;
 }
 
 body nav img {
@@ -341,6 +336,7 @@ body nav ul li button {
   /* Rimuove la sottolineatura */
   border-radius: 15px;
 }
+/*end navbar*/
 
 .filter-overlay {
   position: fixed;
