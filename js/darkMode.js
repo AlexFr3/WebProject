@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add(savedTheme);
   const logo = document.getElementById("logo");
   logo.src = savedTheme === 'dark' ? "../img/logoDark.png" : "../img/logoLight.png";
+  updateCSSVariables(savedTheme);
 });
 
 // Seleziona il bottone
@@ -29,4 +30,11 @@ darkModeButton.addEventListener('click', () => {
   // Cambia immagine in base al tema
   const logo = document.getElementById("logo");
   logo.src = newTheme === 'dark' ? "../img/logoDark.png" : "../img/logoLight.png";
+  updateCSSVariables(newTheme);
 });
+function updateCSSVariables(theme) {
+  const root = document.documentElement.style;
+  root.setProperty('--article-hover', theme === 'dark' ? '#525252' : '#f5f5f5');
+  console.log('Updated CSS variable:', theme, root.getPropertyValue('--article-hover'));
+}
+
