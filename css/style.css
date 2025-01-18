@@ -1,23 +1,21 @@
+:root {
+  --button-color: #0f2f75;
+  --font-size: 14px;
+  --color-hover:#36a8df;
+  --footer-color:#f5f6fa;
+  --article-hover:#f5f5f5;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-header {
-  border-bottom: 1px solid #d6d4d4;
-}
-
-body header {
-  height: 10%;
-}
-
+/*img logo*/
 body header img {
   width: 30%;
   margin-left: 35%;
   margin-right: 35%;
-  margin-bottom: 0%;
-}
+}/*logo*/
 
 body nav ul li {
   cursor: pointer;
@@ -61,7 +59,6 @@ body main form {
   width: 80%;
   text-align: center;
   font-size: 16px;
-  background-color: #eaf4ff;
 }
 
 body main form h1{
@@ -104,19 +101,13 @@ body > main > form > ul > li > label {
 body > main > form > ul > li > input {
   width: 100%; 
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 20px;
   border: 1px solid #ccc;
   box-sizing: border-box; 
-}
-
-
-body > main > form > ul > li > input {
-  width: 70%;
-  padding: 10px 5%;
-  border: 1px solid #007BFF;
-  border-radius: 5px;
-  box-sizing: border-box;
+  color: black;
   background-color: #f4f8fb;
+  border: 1px solid #007BFF;
+  max-width:fit-content;
 }
 
 form input:focus {
@@ -124,12 +115,14 @@ form input:focus {
   outline: none;
   background-color: #eaf4ff;
 }
-
+/*disable article*/
 body main section article input[type="button"]:disabled, body main section article input[type="button"]:disabled:hover{
   background-color: #797979;
   cursor: auto;
 }
+/*end disable article*/
 
+/*footer*/
 body main footer{
   text-align: center;
   width: 100%;
@@ -139,7 +132,7 @@ body main footer{
 body main > footer a{
   text-decoration: none;
   font-family: "Arial", Courier, monospace;
-  background-color: #0f2f75;
+  background-color: var(--button-color);
   border: none;
   color: white;
   padding: 6px 5%;
@@ -152,16 +145,31 @@ body main > footer a{
   cursor: pointer;
   border-radius: 20px;
 }
+body footer {
+  background-color: var(--footer-color);
+  padding: 10px;
+}
+
+body footer p {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+body footer img {
+  width: 5%;
+}
+/*end footer*/
 /*button*/
 .button{
   font-family: "Arial", Courier, monospace;
-  background-color: #0f2f75;
+  background-color: var(--button-color);
   border: none;
   color: white;
   padding: 6px 12px;
   text-align: center;
   width: 100%;
-  font-size: 14px;
+  font-size: var(--font-size);
   margin: 2% 1px;
   cursor: pointer;
   border-radius: 20px;
@@ -173,7 +181,7 @@ body main > footer a{
 
 .button:hover, 
 body main > footer a:hover{
-  background-color: #36a8df;
+  background-color: var(--color-hover);
 }
 /*end button*/
 body main section img {
@@ -197,21 +205,6 @@ body main section article {
   flex-direction: column;
   margin: 0% 10px 10px 0%;
   width: 30%;
-}
-
-body footer {
-  background-color: #f5f6fa;
-  padding: 10px;
-}
-
-body footer p {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-
-body footer img {
-  width: 5%;
 }
 
 body nav img {
@@ -241,14 +234,14 @@ body main article img {
 }
 /*modificare con dark mode */
 body main ul li article:hover {
-  background-color: #f5f5f5;
+  background-color:var(--article-hover);
 }
 
 body nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0f2f75;
+  background-color:var(--button-color);
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -273,7 +266,7 @@ body nav ul li a {
 }
 
 body nav ul li a:hover {
-  background-color: #35a9df;
+  background-color: var(--color-hover);
   color: black;
 }
 
@@ -302,7 +295,7 @@ body nav ul li a:hover {
 }
 /*navbar*/
 body nav ul li button:hover {
-  background-color: #35a9df;
+  background-color: var(--color-hover);
   color: black;
 }
 
@@ -311,7 +304,7 @@ body nav ul {
   flex-wrap: wrap; /* Permette alla lista di andare su più righe */
   justify-content: center;
   align-items: center;
-  background-color: #0f2f75;
+  background-color: var(--button-color);
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -331,11 +324,12 @@ body nav ul li button {
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
   border: 0;
-  background-color: #0f2f75;
+  background-color: var(--button-color);
   text-decoration: none;
   /* Rimuove la sottolineatura */
   border-radius: 15px;
 }
+/*end navbar*/
 
 .filter-overlay {
   position: fixed;
