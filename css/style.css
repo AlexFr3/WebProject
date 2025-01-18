@@ -101,7 +101,7 @@ body > main > form > ul > li > label {
 body > main > form > ul > li > input {
   width: 100%; 
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 20px;
   border: 1px solid #ccc;
   box-sizing: border-box; 
   color: black;
