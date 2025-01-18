@@ -35,6 +35,7 @@ darkModeButton.addEventListener('click', () => {
 function updateCSSVariables(theme) {
   const root = document.documentElement.style;
   root.setProperty('--article-hover', theme === 'dark' ? '#525252' : '#f5f5f5');
-  console.log('Updated CSS variable:', theme, root.getPropertyValue('--article-hover'));
+  root.setProperty('--footer-color', theme === 'dark' ? '#525252' : '#f5f6fa');
+
 }
 

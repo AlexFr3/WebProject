@@ -59,7 +59,6 @@ body main form {
   width: 80%;
   text-align: center;
   font-size: 16px;
-  background-color: #eaf4ff;
 }
 
 body main form h1{
@@ -105,16 +104,10 @@ body > main > form > ul > li > input {
   border-radius: 5px;
   border: 1px solid #ccc;
   box-sizing: border-box; 
-}
-
-
-body > main > form > ul > li > input {
-  width: 70%;
-  padding: 10px 5%;
-  border: 1px solid #007BFF;
-  border-radius: 5px;
-  box-sizing: border-box;
+  color: black;
   background-color: #f4f8fb;
+  border: 1px solid #007BFF;
+  max-width:fit-content;
 }
 
 form input:focus {

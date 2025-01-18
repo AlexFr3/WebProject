@@ -34,7 +34,7 @@
   </main>
   <footer>
     <p>
-      Manga Paradise Via dell'Università, 50, Cesena<img src="../img/Logo.png" alt="Logo" />
+      Manga Paradise Via dell'Università, 50, Cesena<img src="../img/logoDark.png" alt="Logo" />
     </p>
   </footer>
   
