@@ -29,7 +29,7 @@ class DatabaseHelper
         return $result -> fetch_all(MYSQLI_ASSOC);
     }
     
-    public function getAllManga($categories, $genres, $price) {
+    public function getAllManga($categories, $genres, $price, $orderBy) {
         $query = "SELECT DISTINCT m.Prezzo, m.Voto, m.Titolo, m.Descrizione, m.Quantità, m.Immagine, m.Data_uscita 
                   FROM Manga m
                   LEFT JOIN Manga_has_Categoria mc ON m.idManga = mc.Manga_idManga
@@ -57,6 +57,16 @@ class DatabaseHelper
             $query .= " AND m.Prezzo <= ?";
             $params[] = $price;
         }
+
+        // Ordinamento
+        if ($orderBy === 'voti') {
+            $query .= " ORDER BY m.Voto DESC";
+        } elseif ($orderBy === 'prezzo') {
+            $query .= " ORDER BY m.Prezzo ASC";
+        } elseif ($orderBy === 'data') {
+            $query .= " ORDER BY m.Data_uscita DESC";
+        }
+
     
         // Prepara ed esegui la query
         $stmt = $this->db->prepare($query);

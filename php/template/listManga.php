@@ -1,9 +1,16 @@
 <section>
   <h1>Manga</h1>
   <p>Tutti i manga sono protetti in una perfetta bustina protettiva su misura.</p>
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67"/>
-  </svg>
+  <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Ordina per
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="Manga.php?orderBy=voti">Voti</a></li>
+    <li><a class="dropdown-item" href="Manga.php?orderBy=data">Data uscita</a></li>
+    <li><a class="dropdown-item" href="Manga.php?orderBy=prezzo">Prezzo</a></li>
+  </ul>
+  </div>
   <button type="button" class="btn btn-outline-info rounded-pill">Filtra per</button>
 </section>
 

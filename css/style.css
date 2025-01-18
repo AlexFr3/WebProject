@@ -366,3 +366,15 @@ body nav ul li button {
 .blur {
   filter: blur(20px); 
 }
+
+.dropdown {
+  display: inline-flex;
+}
+
+.dropdown-menu {
+  flex-direction: column;
+}
+
+.dropdown-menu.show {
+  display: inline-flex;
+}
