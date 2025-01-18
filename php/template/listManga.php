@@ -8,14 +8,14 @@
 </section>
 
 <section class="filter-overlay">
-  <form action="#" method="post" class="filter-form">
+  <form action="Manga.php" method="post" class="filter-form">
   <h3>Filtra Manga</h3>
     <!-- Categoria -->
     <h4 class="mb-3">Categoria</h4>
     <ul class="list-unstyled">
     <?php foreach ($templateParams["Categories"] as $category): ?>
         <li>
-        <input class="form-check-input" type="checkbox" id="<?= htmlspecialchars($category['Descrizione']) ?>" name="categories[]" value="<?= htmlspecialchars($category['Descrizione']) ?>" />
+        <input class="form-check-input" type="checkbox" id="<?= htmlspecialchars($category['Descrizione']) ?>" name="categories[]" value="<?= htmlspecialchars($category['idCategoria']) ?>" />
         <label class="form-check-label" for="<?= htmlspecialchars($category['Descrizione']) ?>"><?= htmlspecialchars($category['Descrizione']) ?></label>
         </li>
       <?php endforeach; ?>
@@ -46,7 +46,7 @@
     <ul class="list-unstyled">
     <?php foreach ($templateParams["Genres"] as $type): ?>
         <li>
-        <input class="form-check-input" type="checkbox" id="<?= htmlspecialchars($type['Descrizione']) ?>" name="genres[]" value="<?= htmlspecialchars($type['Descrizione']) ?>" />
+        <input class="form-check-input" type="checkbox" id="<?= htmlspecialchars($type['Descrizione']) ?>" name="genres[]" value="<?= htmlspecialchars($type['idGenere']) ?>" />
         <label class="form-check-label" for="<?= htmlspecialchars($type['Descrizione']) ?>"><?= htmlspecialchars($type['Descrizione']) ?></label>
         </li>
       <?php endforeach; ?>

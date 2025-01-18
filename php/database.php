@@ -13,7 +13,7 @@ class DatabaseHelper
 
     public function getAllGenres() {
 
-        $stmt = $this -> db -> prepare("SELECT Descrizione FROM Genere");
+        $stmt = $this -> db -> prepare("SELECT idGenere, Descrizione FROM Genere");
         $stmt -> execute();
         $result = $stmt -> get_result();
 
@@ -22,20 +22,47 @@ class DatabaseHelper
 
     public function getAllCategories() {
 
-        $stmt = $this -> db -> prepare("SELECT Descrizione FROM Categoria");
+        $stmt = $this -> db -> prepare("SELECT idCategoria, Descrizione FROM Categoria");
         $stmt -> execute();
         $result = $stmt -> get_result();
 
         return $result -> fetch_all(MYSQLI_ASSOC);
     }
-    /*da modificare*/
-    public function getAllManga()
-    {
-        $stmt = $this->db->prepare("SELECT Prezzo, Voto, Titolo, Descrizione, Quantità, Immagine, Data_uscita FROM Manga");
-        $stmt->execute();
-        $result = $stmt->get_result();
-
+    
+    public function getAllManga($categories, $genres, $price) {
+        $query = "SELECT DISTINCT m.Prezzo, m.Voto, m.Titolo, m.Descrizione, m.Quantità, m.Immagine, m.Data_uscita 
+                  FROM Manga m
+                  LEFT JOIN Manga_has_Categoria mc ON m.idManga = mc.Manga_idManga
+                  LEFT JOIN Manga_has_Genere mg ON m.idManga = mg.Manga_idManga
+                  WHERE 1=1";
+    
+        $params = [];
         
+        // Filtro per categorie
+        if (!empty($categories)) {
+            $placeholders = implode(',', array_fill(0, count($categories), '?'));
+            $query .= " AND mc.Categoria_idCategoria IN ($placeholders)";
+            $params = array_merge($params, $categories);
+        }
+    
+        // Filtro per generi
+        if (!empty($genres)) {
+            $placeholders = implode(',', array_fill(0, count($genres), '?'));
+            $query .= " AND mg.Genere_idGenere IN ($placeholders)";
+            $params = array_merge($params, $genres);
+        }
+    
+        // Filtro per prezzo
+        if ($price > 0) {
+            $query .= " AND m.Prezzo <= ?";
+            $params[] = $price;
+        }
+    
+        // Prepara ed esegui la query
+        $stmt = $this->db->prepare($query);
+        $stmt->execute($params);
+        $result = $stmt->get_result();
+    
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
