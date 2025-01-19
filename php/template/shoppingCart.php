@@ -17,7 +17,7 @@
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
             <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
             <input type="hidden" value="<?php echo($manga['idManga']) ?>" />
-            <input class="button" type="button" value="Rimuovi" />
+            <input class="button-manga" type="button" value="✖" />
           </article>
         </li>
       <?php endforeach; ?>
@@ -28,5 +28,5 @@
 <section>
    <h1>Riepilogo</h1>
    <p class="lead fw-bold"> Numero Articoli: <?php echo($templateParams["numero-articoli"]) ?><br/>Prezzo Totale: <?php echo($templateParams["prezzo-totale"]) ?>€</p>
-   <footer><a href="#">Procedi all'ordine</a></footer>
+   <footer><a class="confirm-button" href="#">Procedi all'ordine</a></footer>
 </section>

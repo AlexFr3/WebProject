@@ -4,6 +4,9 @@
   --color-hover:#36a8df;
   --footer-color:#f5f6fa;
   --article-hover:#f5f5f5;
+  --delete-manga:#d6d6d6;
+  --delete-button:#ff0000;
+  --delete-button-hover:#ff0000;
 }
 * {
   margin: 0;
@@ -136,12 +139,12 @@ body main footer{
 body main footer a{
   text-decoration: none;
   font-family: "Arial", Courier, monospace;
-  background-color: var(--button-color);
+  background-color: #b70000;
   border: none;
   color: white;
   padding: 6px 5%;
   text-align: center;
-  font-size: 25px;
+  font-size: 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -380,4 +383,40 @@ body nav ul li button {
 
 .dropdown-menu.show {
   display: inline-flex;
+}
+.button-manga{
+  font-family: "Arial", Courier, monospace;
+  background-color: var(--delete-manga);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  font-size: 20px;
+  margin: 2% 1px;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.button-manga:hover{
+  background-color: var(--delete-button-hover);
+}
+
+.confirm-button{
+  text-decoration: none;
+  font-family: "Arial", Courier, monospace;
+  background-color: #65C676;
+  border: none;
+  color: white;
+  padding: 6px 5%;
+  text-align: center;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 2% 1px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.confirm-button:hover{
+  background-color: #02720f;
 }
