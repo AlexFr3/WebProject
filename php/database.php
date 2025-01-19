@@ -250,21 +250,28 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function checkLogin($email, $password)
-    {
-        $query = "SELECT email, venditore, nome, cognome FROM utente WHERE email = ? AND password = ?";
+    public function checkLogin($email, $password){
+        $query = "SELECT email, password, venditore, nome, cognome FROM utente WHERE email = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $email, $password);
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
+    
+        $user = $result->fetch_assoc();
+        if ($user && password_verify($password, $user['password'])) {
+            unset($user['password']); 
+            return $user;
+        }
+        return false; 
     }
+    
+    
 
     public function registerNewUser($nome, $cognome, $email, $password){
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $query = "INSERT INTO `Utente` (`Email`, `Nome`, `Cognome`, `Password`, `Venditore`) VALUES(?, ?, ?, ?, 0)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssss', $email, $nome, $cognome, $password);
+        $stmt->bind_param('ssss', $email, $nome, $cognome, $hashedPassword);
         if ($stmt->execute()) {
             return true;
         } else {
