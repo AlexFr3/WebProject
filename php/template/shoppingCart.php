@@ -23,7 +23,7 @@
       <?php endforeach; ?>
     <?php endif; ?>
   </ul>
-  <footer><a href="emptyCart.php">Svuota il carrello</a></footer>
+  <a class="red-button" href="emptyCart.php">Svuota il carrello</a>
 </section>
 <section>
    <h1>Riepilogo</h1>

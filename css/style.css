@@ -128,29 +128,16 @@ body main section article input[type="button"]:disabled, body main section artic
   cursor: auto;
 }
 /*end disable article*/
-
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
 /*footer*/
-body main footer{
+body main {
   text-align: center;
   width: 100%;
   margin: 10px 0;
-}
-
-body main footer a{
-  text-decoration: none;
-  font-family: "Arial", Courier, monospace;
-  background-color: #b70000;
-  border: none;
-  color: white;
-  padding: 6px 5%;
-  text-align: center;
-  font-size: 16px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 2% 1px;
-  cursor: pointer;
-  border-radius: 20px;
 }
 body footer {
   background-color: var(--footer-color);
@@ -419,4 +406,20 @@ body nav ul li button {
 }
 .confirm-button:hover{
   background-color: #02720f;
+}
+.red-button{
+  text-decoration: none;
+  font-family: "Arial", Courier, monospace;
+  background-color: #b70000;
+  border: none;
+  color: white;
+  padding: 6px 5%;
+  text-align: center;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 2% 1px;
+  cursor: pointer;
+  border-radius: 20px;
 }
