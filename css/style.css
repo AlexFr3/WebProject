@@ -5,7 +5,7 @@
   --footer-color:#f5f6fa;
   --article-hover:#f5f5f5;
   --delete-manga:#d6d6d6;
-  --delete-button:#ff0000;
+  --delete-button:#b70000;
   --delete-button-hover:#ff0000;
 }
 * {
@@ -410,7 +410,7 @@ body nav ul li button {
 .red-button{
   text-decoration: none;
   font-family: "Arial", Courier, monospace;
-  background-color: #b70000;
+  background-color: var(--delete-button);
   border: none;
   color: white;
   padding: 6px 5%;
@@ -422,4 +422,7 @@ body nav ul li button {
   margin: 2% 1px;
   cursor: pointer;
   border-radius: 20px;
+}
+.red-button:hover{
+  background-color:var(--delete-button-hover);
 }
