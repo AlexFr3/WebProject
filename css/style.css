@@ -173,10 +173,9 @@ body footer img {
   margin: 2% 1px;
   cursor: pointer;
   border-radius: 20px;
-  padding-left: 10%;
-  padding-right: 10%;
   overflow: hidden;
   width: min-content;
+  min-width: 140px;
 }
 
 .button:hover, 
