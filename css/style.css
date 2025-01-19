@@ -154,29 +154,7 @@ body footer img {
   width: 5%;
 }
 /*end footer*/
-/*button*/
-.button{
-  font-family: "Arial", Courier, monospace;
-  background-color: var(--button-color);
-  border: none;
-  color: white;
-  padding: 6px 12px;
-  text-align: center;
-  width: 100%;
-  font-size: var(--font-size);
-  margin: 2% 1px;
-  cursor: pointer;
-  border-radius: 20px;
-  overflow: hidden;
-  width: min-content;
-  min-width: 140px;
-}
 
-.button:hover, 
-body main footer a:hover{
-  background-color: var(--color-hover);
-}
-/*end button*/
 body main section img {
   width: 100%;
 }
@@ -285,6 +263,10 @@ body nav ul li a:hover {
   body > main > section > article > input[type="button"] {
     font-size: 12px;
   }
+  .button{
+    width: min-content;
+    min-width: 60px;
+  }
 }
 /*navbar*/
 body nav ul li button:hover {
@@ -371,6 +353,28 @@ body nav ul li button {
 .dropdown-menu.show {
   display: inline-flex;
 }
+
+/*button*/
+.button{
+  font-family: "Arial", Courier, monospace;
+  background-color: var(--button-color);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  width: 100%;
+  font-size: var(--font-size);
+  margin: 2% 1px;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button:hover, 
+body main footer a:hover{
+  background-color: var(--color-hover);
+}
 .button-manga{
   font-family: "Arial", Courier, monospace;
   background-color: var(--delete-manga);
@@ -426,3 +430,4 @@ body nav ul li button {
 .red-button:hover{
   background-color:var(--delete-button-hover);
 }
+/*end button*/
