@@ -183,11 +183,45 @@ class DatabaseHelper
         $query = "INSERT INTO `Carrello` (`Utente_Email`, `Manga_idManga`) VALUES(?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $idManga);
-        if ($stmt->execute()) {
-            return true;
-        } else {
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
             return false;
         }
+        
+    }
+
+    public function getMangaInCart($email){
+        $stmt = $this->db->prepare("SELECT idManga, Titolo, Immagine, Prezzo FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getTotalPrice($email){
+        $stmt = $this->db->prepare("SELECT SUM(Prezzo) as TOTALE FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result = mysqli_fetch_assoc($result);
+
+        return $result["TOTALE"];
+    }
+
+    public function getItemNumber($email){
+        $stmt = $this->db->prepare("SELECT COUNT(*) as Articoli FROM Carrello C WHERE C.Utente_Email = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result = mysqli_fetch_assoc($result);
+
+        return (int)$result["Articoli"];
     }
 
 }
