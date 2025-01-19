@@ -127,11 +127,122 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function checkLogin($email, $password)
-    {
-        $query = "SELECT email, venditore, nome, cognome FROM utente WHERE email = ? AND password = ?";
+    public function checkLogin($email, $password){
+        $query = "SELECT email, password, venditore, nome, cognome FROM utente WHERE email = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $email, $password);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $user = $result->fetch_assoc();
+        if ($user && password_verify($password, $user['password'])) {
+            unset($user['password']); 
+            return $user;
+        }
+        return false; 
+    }
+
+    public function getPostById($id)
+    {
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, nome FROM articolo, autore WHERE idarticolo=? AND autore=idautore";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPostByCategory($idcategory)
+    {
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, anteprimaarticolo, dataarticolo, nome FROM articolo, autore, articolo_ha_categoria WHERE categoria=? AND autore=idautore AND idarticolo=articolo";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idcategory);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPostByIdAndAuthor($id, $idauthor)
+    {
+        $query = "SELECT idarticolo, anteprimaarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND autore=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $id, $idauthor);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPostByAuthorId($id)
+    {
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo FROM articolo WHERE autore=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertArticle($titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore)
+    {
+        $query = "INSERT INTO articolo (titoloarticolo, testoarticolo, anteprimaarticolo, dataarticolo, imgarticolo, autore) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssssi', $titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
+
+    public function updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $autore)
+    {
+        $query = "UPDATE articolo SET titoloarticolo = ?, testoarticolo = ?, anteprimaarticolo = ?, imgarticolo = ? WHERE idarticolo = ? AND autore = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssii', $titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $idarticolo, $autore);
+
+        return $stmt->execute();
+    }
+
+    public function deleteArticleOfAuthor($idarticolo, $autore)
+    {
+        $query = "DELETE FROM articolo WHERE idarticolo = ? AND autore = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idarticolo, $autore);
+        $stmt->execute();
+        var_dump($stmt->error);
+        return true;
+    }
+
+    public function insertCategoryOfArticle($articolo, $categoria)
+    {
+        $query = "INSERT INTO articolo_ha_categoria (articolo, categoria) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $articolo, $categoria);
+        return $stmt->execute();
+    }
+
+    public function deleteCategoryOfArticle($articolo, $categoria)
+    {
+        $query = "DELETE FROM articolo_ha_categoria WHERE articolo = ? AND categoria = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $articolo, $categoria);
+        return $stmt->execute();
+    }
+
+    public function deleteCategoriesOfArticle($articolo)
+    {
+        $query = "DELETE FROM articolo_ha_categoria WHERE articolo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $articolo);
+        return $stmt->execute();
+    }
+
+    public function getAuthors()
+    {
+        $query = "SELECT username, nome, GROUP_CONCAT(DISTINCT nomecategoria) as argomenti FROM categoria, articolo, autore, articolo_ha_categoria WHERE idarticolo=articolo AND categoria=idcategoria AND autore=idautore AND attivo=1 GROUP BY username, nome";
+        $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -139,9 +250,10 @@ class DatabaseHelper
     }
 
     public function registerNewUser($nome, $cognome, $email, $password){
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $query = "INSERT INTO `Utente` (`Email`, `Nome`, `Cognome`, `Password`, `Venditore`) VALUES(?, ?, ?, ?, 0)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssss', $email, $nome, $cognome, $password);
+        $stmt->bind_param('ssss', $email, $nome, $cognome, $hashedPassword);
         if ($stmt->execute()) {
             return true;
         } else {

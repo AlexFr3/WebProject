@@ -14,10 +14,12 @@ function isUserLoggedIn(){
 }
 
 function registerLoggedUser($user){
-    $_SESSION["email"] = $user["email"];
-    $_SESSION["venditore"] = $user["venditore"];
-    $_SESSION["nome"] = $user["nome"];
-    $_SESSION["cognome"] = $user["cognome"];
+    if (is_array($user)) {
+        $_SESSION["email"] = $user["email"];
+        $_SESSION["venditore"] = $user["venditore"];
+        $_SESSION["nome"] = $user["nome"];
+        $_SESSION["cognome"] = $user["cognome"];
+    }
 }
 
 function unlogUser(){
