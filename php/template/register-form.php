@@ -20,7 +20,7 @@
                 <label for="conf-password">Conferma Password:</label><input type="password" id="conf-password" name="conf-password" />
             </li>
             <li>
-                <input type="submit" name="submit" value="Registrati" />
+                <input class="button"type="submit" name="submit" value="Registrati" />
             </li>
         </ul>
         </form>
