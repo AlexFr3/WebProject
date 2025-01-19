@@ -28,5 +28,5 @@
 <section>
    <h1>Riepilogo</h1>
    <p class="lead fw-bold"> Numero Articoli: <?php echo($templateParams["numero-articoli"]) ?><br/>Prezzo Totale: <?php echo($templateParams["prezzo-totale"]) ?>€</p>
-   <footer><a class="confirm-button" href="#">Procedi all'ordine</a></footer>
+   <a class="confirm-button" href="#">Procedi all'ordine</a>
 </section>
