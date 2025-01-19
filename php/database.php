@@ -133,8 +133,13 @@ class DatabaseHelper
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
+    
+        $user = $result->fetch_assoc();
+        if ($user && password_verify($password, $user['password'])) {
+            unset($user['password']); 
+            return $user;
+        }
+        return false; 
     }
 
     public function getPostById($id)
@@ -243,23 +248,6 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
-    public function checkLogin($email, $password){
-        $query = "SELECT email, password, venditore, nome, cognome FROM utente WHERE email = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-    
-        $user = $result->fetch_assoc();
-        if ($user && password_verify($password, $user['password'])) {
-            unset($user['password']); 
-            return $user;
-        }
-        return false; 
-    }
-    
-    
 
     public function registerNewUser($nome, $cognome, $email, $password){
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
