@@ -184,7 +184,7 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $idManga);
         try {
-            if ($stmt->execute()) {
+            if ($stmt->execute() && $conn->affected_rows) {
                 return true;
             } else {
                 return false;
@@ -192,11 +192,11 @@ class DatabaseHelper
         } catch (Exception $e) {
             return false;
         }
-        
     }
 
     public function getMangaInCart($email){
-        $stmt = $this->db->prepare("SELECT idManga, Titolo, Immagine, Prezzo FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga");
+        $query = "SELECT idManga, Titolo, Immagine, Prezzo FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga";
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -205,7 +205,8 @@ class DatabaseHelper
     }
 
     public function getTotalPrice($email){
-        $stmt = $this->db->prepare("SELECT SUM(Prezzo) as TOTALE FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga");
+        $query = "SELECT SUM(Prezzo) as TOTALE FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga";
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -215,7 +216,8 @@ class DatabaseHelper
     }
 
     public function getItemNumber($email){
-        $stmt = $this->db->prepare("SELECT COUNT(*) as Articoli FROM Carrello C WHERE C.Utente_Email = ?");
+        $query = "SELECT COUNT(*) as Articoli FROM Carrello C WHERE C.Utente_Email = ?";
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -224,5 +226,19 @@ class DatabaseHelper
         return (int)$result["Articoli"];
     }
 
+    public function removeFromCart($idManga, $email){
+        $query = "DELETE FROM Carrello WHERE Utente_Email = ? AND Manga_idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $email, $idManga);
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
 ?>
