@@ -85,9 +85,10 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getLatestManga($n)
     {
-        $stmt = $this->db->prepare("SELECT Titolo, Immagine, Quantità, Prezzo FROM Manga ORDER BY Data_uscita DESC LIMIT ?");
+        $stmt = $this->db->prepare("SELECT idManga, Titolo, Immagine, Quantità, Prezzo FROM Manga ORDER BY Data_uscita DESC LIMIT ?");
         $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -97,7 +98,7 @@ class DatabaseHelper
 
     public function getTopRatedManga($n)
     {
-        $stmt = $this->db->prepare("SELECT Voto, Titolo, Immagine, Quantità, Prezzo FROM Manga ORDER BY Voto DESC LIMIT ?");
+        $stmt = $this->db->prepare("SELECT idManga, Voto, Titolo, Immagine, Quantità, Prezzo FROM Manga ORDER BY Voto DESC LIMIT ?");
         $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -283,6 +284,32 @@ class DatabaseHelper
             return false;
         } else {
             return true;
+        }
+    }
+
+    public function getQuantity($idManga){
+        $query = "SELECT Quantità FROM manga WHERE idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idManga);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        if(count($result)==0){
+            return 0;
+        } else {
+            return (int) $result[0]["Quantità"];
+        }
+    }
+
+    public function addToCart($idManga, $email){
+        $query = "INSERT INTO `Carrello` (`Utente_Email`, `Manga_idManga`) VALUES(?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $email, $idManga);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
         }
     }
 

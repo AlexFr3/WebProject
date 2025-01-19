@@ -55,10 +55,10 @@ CREATE TABLE IF NOT EXISTS Manga_has_Categoria (
 
 -- Creazione della tabella Carrello
 CREATE TABLE IF NOT EXISTS Carrello (
-    idCarrello INT(11) AUTO_INCREMENT PRIMARY KEY, 
     Utente_Email VARCHAR(100) NOT NULL,             
     Manga_idManga INT(11) NOT NULL,                 
     Quantità INT(11) NOT NULL DEFAULT 1,            
     FOREIGN KEY (Utente_Email) REFERENCES Utente(Email),
-    FOREIGN KEY (Manga_idManga) REFERENCES Manga(idManga)
+    FOREIGN KEY (Manga_idManga) REFERENCES Manga(idManga),
+    PRIMARY KEY (Manga_idManga, Utente_Email)
 );
