@@ -133,7 +133,7 @@ body main footer{
   margin: 10px 0;
 }
 
-body main > footer a{
+body main footer a{
   text-decoration: none;
   font-family: "Arial", Courier, monospace;
   background-color: var(--button-color);
@@ -183,7 +183,7 @@ body footer img {
 }
 
 .button:hover, 
-body main > footer a:hover{
+body main footer a:hover{
   background-color: var(--color-hover);
 }
 /*end button*/

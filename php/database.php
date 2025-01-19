@@ -30,7 +30,7 @@ class DatabaseHelper
     }
     
     public function getAllManga($categories, $genres, $price, $orderBy) {
-        $query = "SELECT DISTINCT m.Prezzo, m.Voto, m.Titolo, m.Descrizione, m.Quantità, m.Immagine, m.Data_uscita 
+        $query = "SELECT DISTINCT m.idManga, m.Prezzo, m.Voto, m.Titolo, m.Descrizione, m.Quantità, m.Immagine, m.Data_uscita 
                   FROM Manga m
                   LEFT JOIN Manga_has_Categoria mc ON m.idManga = mc.Manga_idManga
                   LEFT JOIN Manga_has_Genere mg ON m.idManga = mg.Manga_idManga
@@ -127,16 +127,10 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPosts($n = -1)
-    {
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, anteprimaarticolo, dataarticolo, nome FROM articolo, autore WHERE autore=idautore ORDER BY dataarticolo DESC";
-        if ($n > 0) {
-            $query .= " LIMIT ?";
-        }
+    public function checkLogin($email, $password){
+        $query = "SELECT email, password, venditore, nome, cognome FROM utente WHERE email = ?";
         $stmt = $this->db->prepare($query);
-        if ($n > 0) {
-            $stmt->bind_param('i', $n);
-        }
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -313,11 +307,45 @@ class DatabaseHelper
         $query = "INSERT INTO `Carrello` (`Utente_Email`, `Manga_idManga`) VALUES(?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $idManga);
-        if ($stmt->execute()) {
-            return true;
-        } else {
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
             return false;
         }
+        
+    }
+
+    public function getMangaInCart($email){
+        $stmt = $this->db->prepare("SELECT idManga, Titolo, Immagine, Prezzo FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getTotalPrice($email){
+        $stmt = $this->db->prepare("SELECT SUM(Prezzo) as TOTALE FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result = mysqli_fetch_assoc($result);
+
+        return $result["TOTALE"];
+    }
+
+    public function getItemNumber($email){
+        $stmt = $this->db->prepare("SELECT COUNT(*) as Articoli FROM Carrello C WHERE C.Utente_Email = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result = mysqli_fetch_assoc($result);
+
+        return (int)$result["Articoli"];
     }
 
 }

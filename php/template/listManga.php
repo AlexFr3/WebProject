@@ -99,7 +99,14 @@ overlay.addEventListener('click', (e) => {
               alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
             <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
-            <input class="button" type="button" value="Aggiungi al carrello" />
+            <input type="hidden" value="<?php echo($manga['idManga']) ?>" />
+            <input class="button" type="button" value="<?php if($manga['Quantità'] > 0){
+              echo('Aggiungi al carrello');
+            } else{
+              echo('Non disponibile');
+            }?>"  <?php if($manga['Quantità'] <= 0) {
+              echo("disabled");
+            }?>/>
           </article>
         </li>
       <?php endforeach; ?>
