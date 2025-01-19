@@ -296,7 +296,7 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $idManga);
         try {
-            if ($stmt->execute() && $conn->affected_rows) {
+            if ($stmt->execute()) {
                 return true;
             } else {
                 return false;
@@ -342,6 +342,21 @@ class DatabaseHelper
         $query = "DELETE FROM Carrello WHERE Utente_Email = ? AND Manga_idManga = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $idManga);
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function emptyCart($email){
+        $query = "DELETE FROM Carrello WHERE Utente_Email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
         try {
             if ($stmt->execute()) {
                 return true;

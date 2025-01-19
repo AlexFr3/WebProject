@@ -1,5 +1,5 @@
 <?php if(isset($templateParams["messaggiocarrello"])): ?>
-            <div class="alert text-center <?php if(str_starts_with($templateParams["messaggiocarrello"], "L")){
+            <div class="alert text-center <?php if(str_starts_with($templateParams["messaggiocarrello"], "L") || str_starts_with($templateParams["messaggiocarrello"], "G")){
                 echo("alert-success");
              } else{
                 echo("alert-danger");
@@ -23,7 +23,7 @@
       <?php endforeach; ?>
     <?php endif; ?>
   </ul>
-  <footer><a href="#">Svuota il carrello</a></footer>
+  <footer><a href="emptyCart.php">Svuota il carrello</a></footer>
 </section>
 <section>
    <h1>Riepilogo</h1>
