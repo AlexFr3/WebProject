@@ -30,7 +30,7 @@
             }
         }
 
-
+        $templateParams["scripts"] = ["index.js", "darkMode.js"];
         $templateParams["titolo"] = "MangaParadise | Registrazione";
         $templateParams['nome'] = "register-form.php";
         require 'template/base.php';
