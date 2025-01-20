@@ -13,7 +13,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body{
+  overflow-x: hidden;
+}
 main{
   margin: 0;
   min-height: 500px;
@@ -376,7 +378,6 @@ body nav ul li button {
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
-  min-width: min-content;
 }
 
 .button:hover, 
