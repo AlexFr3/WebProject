@@ -29,7 +29,7 @@ VALUES
 INSERT INTO `Categoria` (`Descrizione`)
 VALUES 
 ('Shonen'),
-('Manga Italiani'),
+('MangaItaliani'),
 ('Manhua');
 
 -- Associazione di Manga ai Generi
@@ -57,5 +57,5 @@ VALUES
 ((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'One Piece - capitolo 2'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen')),
 ((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Dandadan'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen')),
 ((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Hunter x Hunter - capitolo 1'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen')),
-((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Detective Conan - capitolo 1'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Manga Italiani')),
+((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Detective Conan - capitolo 1'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'MangaItaliani')),
 ((SELECT `idManga` FROM `Manga` WHERE `Titolo` = 'Minecraft - capitolo 1'), (SELECT `idCategoria` FROM `Categoria` WHERE `Descrizione` = 'Shonen'));
