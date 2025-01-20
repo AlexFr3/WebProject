@@ -20,6 +20,9 @@
       <li><a href="listMangaIndex.php">Manga</a></li>
       <li><a href="profilo.php">Profilo</a></li>
       <li><a href="shoppingCartIndex.php">Carrello</a></li>
+      <?php if(isUserSeller()): ?>
+      <li><a href="#">Prodotti</a></li> 
+      <?php endif; ?>
       <li>
         <button id="darkModeButton">🌙 Dark Mode</button>
       </li>

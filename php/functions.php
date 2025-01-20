@@ -13,6 +13,14 @@ function isUserLoggedIn(){
     return !empty($_SESSION['email']);
 }
 
+function isUserSeller(){
+    if(!isUserLoggedIn()){
+        return false;
+    } else{
+        return $_SESSION["venditore"]==1;
+    }
+}
+
 function registerLoggedUser($user){
     if (is_array($user)) {
         $_SESSION["email"] = $user["email"];
