@@ -17,7 +17,7 @@
   <nav>
     <ul>
       <li><a href="index.php">Menu</a></li>
-      <li><a href="Manga.php">Manga</a></li>
+      <li><a href="listMangaIndex.php">Manga</a></li>
       <li><a href="profilo.php">Profilo</a></li>
       <li><a href="shoppingCartIndex.php">Carrello</a></li>
       <li>
