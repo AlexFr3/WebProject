@@ -6,16 +6,16 @@
     Ordina per
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="Manga.php?orderBy=voti">Voti</a></li>
-    <li><a class="dropdown-item" href="Manga.php?orderBy=data">Data uscita</a></li>
-    <li><a class="dropdown-item" href="Manga.php?orderBy=prezzo">Prezzo</a></li>
+    <li><a class="dropdown-item" href="listMangaIndex.php?orderBy=voti">Voti</a></li>
+    <li><a class="dropdown-item" href="listMangaIndex.php?orderBy=data">Data uscita</a></li>
+    <li><a class="dropdown-item" href="listMangaIndex.php?orderBy=prezzo">Prezzo</a></li>
   </ul>
   </div>
   <button type="button" class="btn btn-outline-info rounded-pill">Filtra per</button>
 </section>
 
 <section class="filter-overlay">
-  <form action="Manga.php" method="post" class="filter-form">
+  <form action="listMangaIndex.php" method="post" class="filter-form">
   <h3>Filtra Manga</h3>
     <!-- Categoria -->
     <h4 class="mb-3">Categoria</h4>
