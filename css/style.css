@@ -300,7 +300,6 @@ body nav ul li button {
   background: var(--filter-form-color);
   margin-top: 1%;
   margin-bottom: 1%;
-  border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   width: 40%;
   flex-direction: column;
@@ -325,20 +324,15 @@ body nav ul li button {
 .dropdown {
   display: inline-flex;
 }
-
+/* Si può eliminare?(anche da listManga.php) 
 .dropdown-menu {
   flex-direction: column;
-}
+}*/
 
-.dropdown-menu.show {
-  display: inline-flex;
-}
-.form-label{
-  text-align: center;
-}
 .form-check-input{
   background-color: white;
 }
+
 /*button*/
 .button{
   font-family: "Arial", Courier, monospace;

@@ -36,9 +36,9 @@
     <ul class="list-unstyled">
       <li>
         <label for="priceRange" class="form-label">
-          <span class="rangeValue">50</span>$
+          <span class="rangeValue">50</span>€
         </label>
-        <input type="range" class="form-range" min="0" max="100" step="1" name="price" id="priceRange" value="50"
+        <input type="range" min="0" max="100" step="1" name="price" id="priceRange" value="50"
           oninput="updateValue(this.value)" />
       </li>
     </ul>
