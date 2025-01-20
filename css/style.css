@@ -433,4 +433,18 @@ body main footer a:hover{
 .red-button:hover{
   background-color:var(--delete-button-hover);
 }
+.profile-button{
+  font-family: "Arial", Courier, monospace;
+  background-color: var(--button-color);
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  font-size: var(--font-size);
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  width: 100%;
+}
 /*end button*/
