@@ -363,7 +363,6 @@ body nav ul li button {
   color: white;
   padding: 6px 12px;
   text-align: center;
-  width: 100%;
   font-size: var(--font-size);
   margin: 2% 1px;
   cursor: pointer;
@@ -371,6 +370,7 @@ body nav ul li button {
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
+  min-width: min-content;
 }
 
 .button:hover, 
