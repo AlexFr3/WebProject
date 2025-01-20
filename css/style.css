@@ -40,7 +40,7 @@ body main section h1 {
   margin: 2%;
 }
 
-body  main  section  li {
+body >  main >  section > ul > li {
   display: inline-block;
   width: 30%;
 }
@@ -87,7 +87,7 @@ body > main > form > ul {
   margin: 0;
 }
 
-body > main > form > ul > li {
+body > main > form > ul li {
   display: flex;
   flex-direction: column;
   width: 100%; 
@@ -326,10 +326,12 @@ body nav ul li button {
   margin-bottom: 1%;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 100%;
+  width: 50%;
   flex-direction: column;
   max-height: 100vh; 
   overflow-y: auto; /* Scroll verticale se il contenuto supera l'altezza */
+  margin-right: auto; /* Spinge la form a sinistra */
+  margin-left: 0; /* Rimuove il margine sinistro */
 }
 
 .filter-form ul {
@@ -337,6 +339,7 @@ body nav ul li button {
   align-items: center; 
   gap: 10px; 
   flex-direction: column;
+  
 }
 
 .blur {
