@@ -16,7 +16,14 @@
         </article>
         
         <section class="action-buttons">
-            <a href="#" class="button">Aggiungi al carrello</a>
+            <input type="hidden" value="<?php echo ($manga['idManga']) ?>" />
+            <input class="button" type="button" value="<?php if ($manga['Quantità'] > 0) {
+                echo ('Aggiungi al carrello');
+            } else {
+                echo ('Non disponibile');
+            } ?>" <?php if ($manga['Quantità'] <= 0) {
+                echo ("disabled");
+            } ?> />
             <a href="index.php" class="btn btn-secondary">Torna alla home</a>
         </section>
     </section>

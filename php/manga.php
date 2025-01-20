@@ -9,6 +9,7 @@ if (isset($_GET['id'])) {
         $templateParams["titolo"] = "MangaParadise | " . htmlspecialchars($mangaDetails["Titolo"]);
         $templateParams["nome"] = "mangaDetails.php";
         $templateParams["manga"] = $mangaDetails;
+        $templateParams["scripts"] = ["addToCart.js"];
     } else {
         $templateParams["titolo"] = "MangaParadise | Manga non trovato";
     }
