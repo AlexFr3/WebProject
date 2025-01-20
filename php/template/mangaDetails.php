@@ -24,7 +24,7 @@
             } ?>" <?php if ($manga['Quantità'] <= 0) {
                 echo ("disabled");
             } ?> />
-            <a href="index.php" class="btn btn-secondary">Torna alla home</a>
+            <a href="index.php" class="btn btn-secondary rounded-pill">Torna alla home</a>
         </section>
     </section>
 
