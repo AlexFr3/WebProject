@@ -56,7 +56,6 @@
       <?php endforeach; ?>
     </ul>
 
-
     <button type="submit" class="btn btn-primary mt-4 rounded-pill">Filtra</button>
   </form>
 </section>
@@ -70,21 +69,17 @@
 <script>
   const openButton = document.querySelector('.btn-outline-info.rounded-pill');
   const overlay = document.querySelector('.filter-overlay');
-  const content = document.querySelector('section:first-of-type');
   openButton.addEventListener('click', () => {
     overlay.style.display = 'flex';
-    content.classList.add('blur');
   });
 
   // Chiudi il filtro cliccando fuori dalla form
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) {
       overlay.style.display = 'none';
-      content.classList.remove('blur');
     }
   });
 </script>
-
 
 <section>
   <ul>
