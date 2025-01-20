@@ -247,7 +247,7 @@ body nav ul li a:hover {
     height: 6%;
   }
 
-  body > main > section li {
+  body > main > section > ul > li {
     width: 12%;
     margin-bottom: 30px;
     margin-right: 3%;
