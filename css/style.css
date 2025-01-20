@@ -378,6 +378,8 @@ body nav ul li button {
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .button:hover, 
