@@ -17,9 +17,9 @@
 
 <section class="filter-overlay">
   <form action="listMangaIndex.php" method="post" class="filter-form">
-    <h3>Filtra Manga</h3>
+    <h2>Filtra Manga</h2>
     <!-- Categoria -->
-    <h4 class="mb-3">Categoria</h4>
+    <h3 class="mb-3">Categoria</h3>
     <ul class="list-unstyled">
       <?php foreach ($templateParams["Categories"] as $category): ?>
         <li>
@@ -32,7 +32,7 @@
     </ul>
 
     <!-- Prezzo -->
-    <h4 class="mt-4 mb-3">Prezzo</h4>
+    <h3 class="mt-4 mb-3">Prezzo</h3>
     <ul class="list-unstyled">
       <li>
         <label for="priceRange" class="form-label">
@@ -44,7 +44,7 @@
     </ul>
 
     <!-- Genere -->
-    <h4 class="mt-4 mb-3">Genere</h4>
+    <h3 class="mt-4 mb-3">Genere</h3>
     <ul class="list-unstyled">
       <?php foreach ($templateParams["Genres"] as $type): ?>
         <li>
