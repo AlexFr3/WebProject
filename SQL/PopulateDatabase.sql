@@ -1,9 +1,3 @@
--- Inserimento Utenti
-INSERT INTO `Utente` (`Email`, `Nome`, `Cognome`, `Password`, `Venditore`)
-VALUES 
-('utente@example.com', 'Mario', 'Rossi', 'password123', 0),
-('venditore@example.com', 'Luca', 'Bianchi', 'securepass', 1);
-
 -- Inserimento Manga con Prezzo
 INSERT INTO `Manga` (`Voto`, `Titolo`, `Descrizione`, `Quantità`, `Immagine`, `Data_uscita`, `Prezzo`)
 VALUES 

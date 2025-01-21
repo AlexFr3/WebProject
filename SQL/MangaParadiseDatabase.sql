@@ -62,3 +62,22 @@ CREATE TABLE IF NOT EXISTS Carrello (
     FOREIGN KEY (Manga_idManga) REFERENCES Manga(idManga),
     PRIMARY KEY (Manga_idManga, Utente_Email)
 );
+-- Creazione della tabella Ordine
+CREATE TABLE IF NOT EXISTS Ordine (
+    idOrdine INT(11) AUTO_INCREMENT PRIMARY KEY,
+    Utente_Email VARCHAR(100) NOT NULL,
+    Data_ordine DATE NOT NULL DEFAULT CURRENT_DATE,
+    Totale DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (Utente_Email) REFERENCES Utente(Email)
+);
+
+-- Creazione della tabella Ordine_has_Manga
+CREATE TABLE IF NOT EXISTS Ordine_has_Manga (
+    Ordine_idOrdine INT(11) NOT NULL,
+    Manga_idManga INT(11) NOT NULL,
+    Quantità INT(11) NOT NULL,
+    Prezzo_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (Ordine_idOrdine) REFERENCES Ordine(idOrdine),
+    FOREIGN KEY (Manga_idManga) REFERENCES Manga(idManga),
+    PRIMARY KEY (Ordine_idOrdine, Manga_idManga)
+);
