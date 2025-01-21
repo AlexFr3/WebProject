@@ -17,7 +17,7 @@ if(!isUserLoggedIn()){
     $templateParams["numero-articoli"] = $dbh->getItemNumber($_SESSION["email"]);
     $templateParams["titolo"] = "MangaParadise | Carrello";
     $templateParams["nome"] = "shoppingCart.php";
-    $templateParams["scripts"] = ["removeFromCart.js","darkMode.js"];
+    $templateParams["scripts"] = ["removeFromCart.js","darkMode.js", "modifyQuantityInCart.js"];
     require 'template/base.php';
 }
 ?>
