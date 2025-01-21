@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Manga (
     Quantità INT(11) NOT NULL,
     Immagine VARCHAR(255) NOT NULL,
     Data_uscita DATE NOT NULL,
-    Prezzo DECIMAL(10, 2) NOT NULL  -- Aggiunto il campo Prezzo
+    Prezzo DECIMAL(10, 2) NOT NULL 
 );
 
 -- Creazione della tabella Genere
