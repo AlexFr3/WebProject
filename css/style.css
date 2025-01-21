@@ -429,7 +429,7 @@ body main footer a:hover{
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
-  width: 100%;
+  width: 40%;
 }
 /*end button*/
 
@@ -461,5 +461,19 @@ body main footer a:hover{
   }
   .filter-form{
     width: 20%;
+  }
+  .button-manga{
+    font-family: "Arial", Courier, monospace;
+    background-color: var(--delete-manga);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding-left: 10%;
+    padding-right: 10%;
+    overflow: hidden;
   }
 }
