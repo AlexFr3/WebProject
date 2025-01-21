@@ -85,7 +85,9 @@ CREATE TABLE IF NOT EXISTS Ordine (
     Utente_Email VARCHAR(100) NOT NULL,
     Data_ordine DATE NOT NULL DEFAULT CURRENT_DATE,
     Totale DECIMAL(10, 2) NOT NULL,
+    Stato VARCHAR(50) NOT NULL DEFAULT 'In elaborazione',
     FOREIGN KEY (Utente_Email) REFERENCES Utente(Email)
+
 );
 
 -- Creazione della tabella Ordine_has_Manga
