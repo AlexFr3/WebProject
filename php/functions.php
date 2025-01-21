@@ -38,7 +38,6 @@ function unlogUser(){
 }
 
 function getEmptyManga(){
-    idManga, voto, titolo, descrizione, quantità, immagine, Data_uscita, Prezzo,
     return array("idManga" => "", "voto" => "", "titolo" => "", "descrizione" => "", "quantità" => "", "immagine" => "", "Data_uscita" => "", "Prezzo" => "", "categorie" => array(), "generi" => array());
 }
 
