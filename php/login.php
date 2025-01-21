@@ -22,7 +22,7 @@ if (isUserLoggedIn()) {
 } else {
     $templateParams["titolo"] = "MangaParadise | Login";
     $templateParams['nome'] = "login-form.php";
-    $templateParams["scripts"] = ["index.js", "darkMode.js"];
+    $templateParams["scripts"] = ["darkMode.js"];
     if (isset($_GET["msg"])) {
         $templateParams["messaggiologin"] = $_GET["msg"];
     }
