@@ -228,6 +228,75 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function updateMangaQuantityAndCart($idManga, $quantityToRemove) {
+        // Riduci la quantità nella tabella Manga
+        $queryManga = "UPDATE Manga 
+                       SET Quantità = GREATEST(Quantità - ?, 0) 
+                       WHERE idManga = ?";
+        $stmtManga = $this->db->prepare($queryManga);
+        $stmtManga->bind_param("ii", $quantityToRemove, $idManga);
+        $stmtManga->execute();
+    
+        // Controlla la quantità attuale del manga
+        $queryCheckQuantity = "SELECT Quantità FROM Manga WHERE idManga = ?";
+        $stmtCheck = $this->db->prepare($queryCheckQuantity);
+        $stmtCheck->bind_param("i", $idManga);
+        $stmtCheck->execute();
+        $result = $stmtCheck->get_result();
+        $currentQuantity = $result->fetch_assoc()["Quantità"];
+    
+        // Se la quantità è zero, rimuovi il manga dal carrello
+        if ($currentQuantity == 0) {
+            $queryDeleteCart = "DELETE FROM Carrello WHERE Manga_idManga = ?";
+            $stmtCart = $this->db->prepare($queryDeleteCart);
+            $stmtCart->bind_param("i", $idManga);
+            $stmtCart->execute();
+        }
+    
+        return $currentQuantity; // Ritorna la quantità attuale per feedback
+    }
+
+    public function createOrder($userEmail, $cartItems, $total) {
+        try {
+            // Inizia una transazione
+            $this->db->begin_transaction();
+    
+            // Inserisce l'ordine nella tabella Ordine
+            $queryOrder = "INSERT INTO Ordine (Utente_Email, Totale) VALUES (?, ?)";
+            $stmtOrder = $this->db->prepare($queryOrder);
+            $stmtOrder->bind_param("sd", $userEmail, $total);
+            $stmtOrder->execute();
+    
+            // Ottieni l'ID dell'ordine appena creato
+            $orderId = $stmtOrder->insert_id;
+    
+            // Inserisci i dettagli dell'ordine nella tabella Ordine_has_Manga
+            $queryOrderDetails = "INSERT INTO Ordine_has_Manga (Ordine_idOrdine, Manga_idManga, Quantità, Prezzo_unitario) 
+                                  VALUES (?, ?, ?, ?)";
+            $stmtOrderDetails = $this->db->prepare($queryOrderDetails);
+    
+            foreach ($cartItems as $item) {
+                $stmtOrderDetails->bind_param(
+                    "iiid",
+                    $orderId,
+                    $item['idManga'],
+                    $item['quantity'],
+                    $item['price']
+                );
+                $stmtOrderDetails->execute();
+            }
+    
+            // Conferma la transazione
+            $this->db->commit();
+    
+            return $orderId; // Ritorna l'ID dell'ordine creato
+        } catch (Exception $e) {
+            // In caso di errore, effettua un rollback
+            $this->db->rollback();
+            throw $e;
+        }
+    }
+
     public function getTotalPrice($email)
     {
         $query = "SELECT SUM(Prezzo * C.Quantità) as TOTALE FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga";

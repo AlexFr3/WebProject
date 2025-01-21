@@ -1,6 +1,6 @@
 <section>
     <h2>Inserisci i dati della carta</h2>
-    <form action="checkoutIndex.php" method="post">
+    <form action="#" method="post">
     <ul>
         <!-- Nome sulla carta -->
         <li>
@@ -32,4 +32,16 @@
         </li>
     </ul>
     </form>
+
+    <?php 
+        require_once 'bootstrap.php';
+        if(isset($_POST["cardName"]) && isset($_POST["cardNumber"]) && isset($_POST["expireDate"]) && isset($_POST["cvv"])) {
+            $mangaInCar = $dbh -> getMangaInCart($_SESSION["email"]);
+            foreach($mangaInCar  as $manga){
+                $dbh -> updateMangaQuantityAndCart($manga["idManga"], $manga["Quantità In Carrello"]);
+            }
+            $totalPrice = $dbh -> getTotalPrice($_SESSION["email"]);
+            $dbh -> createOrder($_SESSION["email"],$mangaInCar,$totalPrice);
+        }
+    ?>
 </section>
