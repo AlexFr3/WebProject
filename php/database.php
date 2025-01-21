@@ -458,6 +458,28 @@ class DatabaseHelper
         return $stmt->insert_id;
     }
 
+    public function updateManga($idManga, $voto, $titolo, $descrizione, $quantità, $immagine, $dataUscita, $prezzo){
+        $query = "UPDATE Manga SET voto = ?, titolo = ?, descrizione = ?, quantità = ?, immagine = ?, Data_uscita = ?, prezzo = ? WHERE idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('dssissdi', $voto, $titolo, $descrizione, $quantità, $immagine, $dataUscita, $prezzo, $idManga);
+        
+        return $stmt->execute();
+    }
+
+    public function deleteCategoryOfManga($idManga, $idCategoria){
+        $query = "DELETE FROM manga_has_categoria WHERE Manga_idManga = ? AND Categoria_idCategoria = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$idManga, $idCategoria);
+        return $stmt->execute();
+    }
+
+    public function deleteGenreOfManga($idManga, $idGenere){
+        $query = "DELETE FROM manga_has_genere WHERE Manga_idManga = ? AND Genere_idGenere = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$idManga, $idGenere);
+        return $stmt->execute();
+    }
+
     public function insertCategoryOfManga($idManga, $idCategoria){
         $query = "INSERT INTO manga_has_categoria (Manga_idManga, Categoria_idCategoria) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
@@ -506,5 +528,7 @@ class DatabaseHelper
         $stmt->bind_param('i',$idManga);
         return $stmt->execute();
     }
+
+
 }
 ?>

@@ -53,45 +53,66 @@ if($_POST["action"]=="inserisci"){
 
 if($_POST["action"]==="modifica"){
     //modifico
-    $titoloarticolo = htmlspecialchars($_POST["titoloarticolo"]);
-    $testoarticolo = htmlspecialchars($_POST["testoarticolo"]);
-    $anteprimaarticolo = htmlspecialchars($_POST["anteprimaarticolo"]);
-    $anteprimaarticolo = $_POST["anteprimaarticolo"];
-    $autore = $_SESSION["idautore"];
+    $idManga = $_POST["idManga"];
+    $titolo = htmlspecialchars($_POST["titolo"]);
+    $voto = $_POST["voto"];
+    $descrizione = htmlspecialchars($_POST["descrizione"]);
+    $quantità = $_POST["quantità"];
+    $prezzo = $_POST["prezzo"];
+    $data = $_POST["Data"];
 
-    if(isset($_FILES["imgarticolo"]) && strlen($_FILES["imgarticolo"]["name"])>0){
-        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["imgarticolo"]);
+    if(isset($_FILES["imgmanga"]) && strlen($_FILES["imgmanga"]["name"])>0){
+        list($result, $msg) = uploadImage("../img/manga/", $_FILES["imgmanga"]);
         if($result == 0){
-            header("location: login.php?formmsg=".$msg);
+            header("location: products.php?formmsg=".$msg);
         }
-        $imgarticolo = $msg;
-
+        $imgManga = $msg;
+        deleteImg("../img/manga/", $_POST["oldimg"]);
     }
     else{
-        $imgarticolo = $_POST["oldimg"];
+        $imgManga = $_POST["oldimg"];
     }
-    $dbh->updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $autore);
 
-    $categorie = $dbh->getCategories();
+    $dbh->updateManga($idManga, $voto, $titolo, $descrizione, $quantità, $imgManga, $data, $prezzo);
+
+    $categorie = $dbh->getAllCategories();
     $categorie_inserite = array();
     foreach($categorie as $categoria){
-        if(isset($_POST["categoria_".$categoria["idcategoria"]])){
-            array_push($categorie_inserite, $categoria["idcategoria"]);
+        if(isset($_POST["categoria_".$categoria["idCategoria"]])){
+            array_push($categorie_inserite, $categoria["idCategoria"]);
         }
     }
     $categorievecchie = explode(",", $_POST["categorie"]);
 
     $categoriedaeliminare = array_diff($categorievecchie, $categorie_inserite);
     foreach($categoriedaeliminare as $categoria){
-        $ris = $dbh->deleteCategoryOfArticle($idarticolo, $categoria);
+        $ris = $dbh->deleteCategoryOfManga($idManga, $categoria);
     }
     $categoriedainserire = array_diff($categorie_inserite, $categorievecchie);
     foreach($categoriedainserire as $categoria){
-        $ris = $dbh->insertCategoryOfArticle($idarticolo, $categoria);
+        $ris = $dbh->insertCategoryOfManga($idManga, $categoria);
     }
 
-    $msg = "Modifica completata correttamente!";
-    header("location: login.php?formmsg=".$msg);
+    $generi = $dbh->getAllGenres();
+    $generi_inseriti = array();
+    foreach($generi as $genere){
+        if(isset($_POST["genere_".$genere["idGenere"]])){
+            array_push($generi_inseriti, $genere["idGenere"]);
+        }
+    }
+    $generivecchi = explode(",", $_POST["generi"]);
+
+    $generidaeliminare = array_diff($generivecchi, $generi_inseriti);
+    foreach($generidaeliminare as $genere){
+        $ris = $dbh->deleteGenreOfManga($idManga, $genere);
+    }
+    $generidainserire = array_diff($generi_inseriti, $generivecchi);
+    foreach($generidainserire as $genere){
+        $ris = $dbh->insertGenreOfManga($idManga, $genere);
+    }
+
+    $msg = "La modifica è stata completata correttamente!";
+    header("location: products.php?formmsg=".$msg);
 }
 
 if($_POST["action"]==="elimina"){
