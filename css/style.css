@@ -324,10 +324,6 @@ body nav ul li button {
 .dropdown {
   display: inline-flex;
 }
-/* Si può eliminare?(anche da listManga.php) 
-.dropdown-menu {
-  flex-direction: column;
-}*/
 
 .form-check-input{
   background-color: white;
