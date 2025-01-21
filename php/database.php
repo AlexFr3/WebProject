@@ -13,16 +13,17 @@ class DatabaseHelper
 
     public function getOrdersByUser($email)
     {
-        $query = "SELECT O.idOrdine, O.Data_ordine, O.Stato
+        $query = "SELECT O.idOrdine, O.Data_ordine, O.Totale
               FROM Ordine O
               WHERE O.Utente_Email = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $email); 
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getAllGenres()
     {
 
@@ -42,7 +43,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getAllDatabaseManga(){
+    public function getAllDatabaseManga()
+    {
         $query = "SELECT idManga, Titolo, Descrizione, Prezzo, Quantità, Immagine, Data_uscita  FROM Manga";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
