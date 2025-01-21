@@ -1,3 +1,20 @@
+-- Eliminazione del database esistente (se presente)
+DROP DATABASE IF EXISTS MangaParadise;
+
+-- Creazione del database
+CREATE DATABASE IF NOT EXISTS MangaParadise;
+USE MangaParadise;
+
+-- Eliminazione delle tabelle nel caso in cui il database venga ricreato manualmente
+DROP TABLE IF EXISTS Ordine_has_Manga;
+DROP TABLE IF EXISTS Ordine;
+DROP TABLE IF EXISTS Carrello;
+DROP TABLE IF EXISTS Manga_has_Categoria;
+DROP TABLE IF EXISTS Manga_has_Genere;
+DROP TABLE IF EXISTS Categoria;
+DROP TABLE IF EXISTS Genere;
+DROP TABLE IF EXISTS Manga;
+DROP TABLE IF EXISTS Utente;
 -- Creazione del database
 CREATE DATABASE IF NOT EXISTS MangaParadise;
 USE MangaParadise;
