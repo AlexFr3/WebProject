@@ -24,7 +24,9 @@
               echo ("disabled");
             } ?> />
             <input type="hidden" value="<?php echo ($manga['idManga']) ?>" />
-            <input class="button-manga button-manga-quantity increase-quantity" type="button" value="+" />
+            <input class="button-manga button-manga-quantity increase-quantity" type="button" value="+" <?php if ($manga["Quantità_In_Carrello"] >= $manga["Quantità_Disponibile"]) {
+              echo ("disabled");
+            } ?> />
             <section>
               <input type="hidden" value="<?php echo ($manga['idManga']) ?>" />
               <input class="button-manga remove-from-cart" type="button" value="✖" />

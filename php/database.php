@@ -230,7 +230,7 @@ class DatabaseHelper
 
     public function getTotalPrice($email)
     {
-        $query = "SELECT SUM(Prezzo) as TOTALE FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga";
+        $query = "SELECT SUM(Prezzo * C.Quantità) as TOTALE FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -242,7 +242,7 @@ class DatabaseHelper
 
     public function getItemNumber($email)
     {
-        $query = "SELECT COUNT(*) as Articoli FROM Carrello C WHERE C.Utente_Email = ?";
+        $query = "SELECT SUM(C.Quantità) as Articoli FROM Carrello C WHERE C.Utente_Email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -273,6 +273,56 @@ class DatabaseHelper
         $query = "DELETE FROM Carrello WHERE Utente_Email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function isMangaInCart($email, $idManga){
+        $query = "SELECT * FROM CARRELLO WHERE Utente_Email = ? AND Manga_idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $email, $idManga);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        if (count($result) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function getQuantityInCart($email, $idManga)
+    {
+        $query = "SELECT Quantità FROM CARRELLO WHERE Utente_Email = ? AND Manga_idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $email, $idManga);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        if (count($result) == 0) {
+            return 0;
+        } else {
+            return (int) $result[0]["Quantità"];
+        }
+    }
+
+    public function changeQuantityInCart($email, $idManga, $increase){
+        if($increase){
+            $query = "UPDATE CARRELLO SET Quantità = Quantità + 1 WHERE Utente_Email = ? AND Manga_idManga = ?";
+        } else{
+            $query = "UPDATE CARRELLO SET Quantità = Quantità - 1 WHERE Utente_Email = ? AND Manga_idManga = ?";
+        }
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $email, $idManga);
         try {
             if ($stmt->execute()) {
                 return true;
