@@ -1,5 +1,5 @@
 <header>
-    <a class="confirm-button" href="#">Inserisci prodotto</a>
+    <a class="confirm-button" href="manageProducts.php?action=inserisci">Inserisci prodotto</a>
 </header>
 <section>
     <h1>Manga</h1>
@@ -15,13 +15,9 @@
               <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
               <p>Quantità: <?php echo($manga["Quantità"]); ?></p>
             </article>
-            <a class="button" href="">Modifica</a>
-            <a class="red-button" href="">Elimina</a>
-            <!-- <input type="hidden" value="<?php echo ($manga['idManga']) ?>" />
-            <input class="red-button" type="button" value="" />
-            <input type="hidden" value="<?php echo ($manga['idManga']) ?>" />
-            <input class="button" type="button" value="Modifica" />
-          </section> -->
+            <a class="button" href="manageProducts.php?action=modifica&idManga=<?php echo($manga["idManga"]); ?>">Modifica</a>
+            <a class="red-button" href="manageProducts.php?action=elimina&idManga=<?php echo($manga["idManga"]); ?>">Elimina</a>
+        </section>
         </li>
       <?php endforeach; ?>
     <?php else: ?>
