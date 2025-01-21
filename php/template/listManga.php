@@ -38,7 +38,7 @@
         <label for="priceRange" class="form-label">
           <span class="rangeValue">50</span>€
         </label>
-        <input type="range" min="0" max="100" step="1" name="price" id="priceRange" value="50"
+        <input type="range" class="form-range" min="0" max="100" step="1" name="price" id="priceRange" value="50"
           oninput="updateValue(this.value)" />
       </li>
     </ul>
@@ -59,27 +59,6 @@
     <button type="submit" class="btn btn-primary mt-4 rounded-pill">Filtra</button>
   </form>
 </section>
-
-<script>
-  function updateValue(value) {
-    document.querySelector('.rangeValue').textContent = value;
-  }
-</script>
-
-<script>
-  const openButton = document.querySelector('.btn-outline-info.rounded-pill');
-  const overlay = document.querySelector('.filter-overlay');
-  openButton.addEventListener('click', () => {
-    overlay.style.display = 'flex';
-  });
-
-  // Chiudi il filtro cliccando fuori dalla form
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      overlay.style.display = 'none';
-    }
-  });
-</script>
 
 <section>
   <ul>

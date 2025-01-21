@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 $templateParams["titolo"] = "MangaParadise | Manga";
 $templateParams["nome"] = "listManga.php";
-$templateParams["scripts"] = ["index.js", "darkMode.js", "addToCart.js","manga.js"];
+$templateParams["scripts"] = ["index.js", "darkMode.js", "addToCart.js","manga.js","listManga.js"];
 $orderBy = isset($_GET['orderBy']) ? $_GET['orderBy'] : null;
 $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
 $genres = isset($_POST['genres']) ? $_POST['genres'] : [];

@@ -166,6 +166,7 @@ body main section img {
 body main section li {
   margin-bottom: 20px;
   margin-right: 2%;
+  display: flex;
 }
 
 body main section {
@@ -324,10 +325,6 @@ body nav ul li button {
 .dropdown {
   display: inline-flex;
 }
-/* Si può eliminare?(anche da listManga.php) 
-.dropdown-menu {
-  flex-direction: column;
-}*/
 
 .form-check-input{
   background-color: white;
