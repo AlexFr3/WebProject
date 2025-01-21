@@ -13,7 +13,7 @@ if(!isset($_GET["action"]) || ($_GET["action"]!=="modifica" && $_GET["action"]!=
 }
 
 if($_GET["action"]!=="inserisci"){
-    $risultato = $dbh->getPostByIdAndAuthor($_GET["id"], $_SESSION["idautore"]);
+    $risultato = $dbh->getMangaDetails($_GET["idManga"]);
     if(count($risultato)==0){
         $templateParams["manga"] = null;
     }
@@ -25,12 +25,14 @@ if($_GET["action"]!=="inserisci"){
 }
 
 else{
-    $templateParams["manga"] = getEmptyArticle();
+    $templateParams["manga"] = getEmptyManga();
 }
 
 $templateParams["titolo"] = "MangaParadise | Gestione Prodotto";
 $templateParams["nome"] = "productForm.php";
 $templateParams["scripts"] = ["darkMode.js"];
+$templateParams["categorie"] = $dbh->getAllCategories();
+$templateParams["generi"] = $dbh->getAllGenres();
 $templateParams["azione"] = $_GET["action"];
 require 'template/base.php';
 

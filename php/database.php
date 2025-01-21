@@ -22,7 +22,7 @@ class DatabaseHelper
     }
 
     public function getMangaDetails($idManga){
-        $query = "SELECT idManga, voto, titolo, descrizione, quantità, immagine, Data_uscita, Prezzo, (SELECT GROUP_CONCAT(descrizione) FROM manga_has_categoria M, Categoria C WHERE Manga_idManga=idManga AND C.id=Categoria_idCategoria GROUP BY idManga) as categorie, (SELECT GROUP_CONCAT(descrizione) FROM manga_has_genere M, Genere G WHERE Manga_idManga=idManga AND G.idGenere=M.Genere_idGenere GROUP BY idManga) as generi FROM manga WHERE idManga=?";
+        $query = "SELECT idManga, voto, titolo, descrizione, quantità, immagine, Data_uscita, Prezzo, (SELECT GROUP_CONCAT(Categoria_idCategoria) FROM manga_has_categoria M, Categoria C WHERE Manga_idManga=idManga AND C.idCategoria=Categoria_idCategoria GROUP BY idManga) as categorie, (SELECT GROUP_CONCAT(Genere_idGenere) FROM manga_has_genere M, Genere G WHERE Manga_idManga=idManga AND G.idGenere=M.Genere_idGenere GROUP BY idManga) as generi FROM manga WHERE idManga=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$idManga);
         $stmt->execute();
