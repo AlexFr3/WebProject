@@ -429,7 +429,8 @@ body main footer a:hover{
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
-  width: 40%;
+  min-width: 150px;
+  display: inline-block; 
 }
 /*end button*/
 
