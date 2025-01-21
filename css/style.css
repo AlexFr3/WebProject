@@ -438,6 +438,11 @@ body main footer a:hover{
 }
 /*end button*/
 
+.button-inline {
+  display: inline-block;
+}
+
+
 @media screen and (min-width: 1024px) {
   body > header {
     height: 6%;

@@ -24,8 +24,8 @@
               <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
               <p>Quantità: <?php echo($manga["Quantità"]); ?></p>
             </article>
-            <a class="button" href="manageProducts.php?action=modifica&idManga=<?php echo($manga["idManga"]); ?>">Modifica</a>
-            <a class="red-button" href="manageProducts.php?action=elimina&idManga=<?php echo($manga["idManga"]); ?>">Elimina</a>
+            <a class="button button-inline" href="manageProducts.php?action=modifica&idManga=<?php echo($manga["idManga"]); ?>">Modifica</a>
+            <a class="red-button button-inline" href="manageProducts.php?action=elimina&idManga=<?php echo($manga["idManga"]); ?>">Elimina</a>
         </section>
         </li>
       <?php endforeach; ?>
