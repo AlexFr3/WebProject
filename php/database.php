@@ -23,8 +23,16 @@ class DatabaseHelper
 
     public function getAllCategories()
     {
-
         $stmt = $this->db->prepare("SELECT idCategoria, Descrizione FROM Categoria");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllDatabaseManga(){
+        $query = "SELECT idManga, Titolo, Descrizione, Prezzo, Quantità, Immagine, Data_uscita  FROM Manga";
+        $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
 
