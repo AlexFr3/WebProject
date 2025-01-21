@@ -37,8 +37,9 @@ function unlogUser(){
     unset($_SESSION["cognome"]);
 }
 
-function getEmptyArticle(){
-    return array("idarticolo" => "", "titoloarticolo" => "", "imgarticolo" => "", "testoarticolo" => "", "anteprimaarticolo" => "", "categorie" => array());
+function getEmptyManga(){
+    idManga, voto, titolo, descrizione, quantità, immagine, Data_uscita, Prezzo,
+    return array("idManga" => "", "voto" => "", "titolo" => "", "descrizione" => "", "quantità" => "", "immagine" => "", "Data_uscita" => "", "Prezzo" => "", "categorie" => array(), "generi" => array());
 }
 
 function getAction($action){
