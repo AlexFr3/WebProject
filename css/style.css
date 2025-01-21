@@ -371,6 +371,15 @@ body main footer a:hover{
   background-color: var(--delete-button-hover);
 }
 
+.button-manga-quantity{
+  display: inline;
+  text-decoration: none;
+}
+
+.button-manga-quantity:hover{
+  background-color: var(--button-color);
+}
+
 .confirm-button{
   text-decoration: none;
   font-family: "Arial", Courier, monospace;

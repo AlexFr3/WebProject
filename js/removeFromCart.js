@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll("body main section article input[type='button']");
+const buttons = document.querySelectorAll(".remove-from-cart");
 buttons.forEach(button => {
     const idManga = button.previousElementSibling.value;
     button.addEventListener("click", function(e){

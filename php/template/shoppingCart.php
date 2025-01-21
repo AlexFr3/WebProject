@@ -16,8 +16,13 @@
               alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
             <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
             <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
+            <p>Quantità: <?php echo($manga["Quantità_In_Carrello"]) ?></p>
             <input type="hidden" value="<?php echo($manga['idManga']) ?>" />
-            <input class="button-manga" type="button" value="✖" />
+            <input class="button-manga button-manga-quantity increase-quantity" type="button" value="+" />
+            <input type="hidden" value="<?php echo($manga['idManga']) ?>" />
+            <input class="button-manga button-manga-quantity decrease-quantity" type="button" value="-" <?php if($manga["Quantità_In_Carrello"] <= 1){ echo("disabled"); } ?>/>
+            <input type="hidden" value="<?php echo($manga['idManga']) ?>" />
+            <input class="button-manga remove-from-cart" type="button" value="✖" />
           </article>
         </li>
       <?php endforeach; ?>

@@ -41,8 +41,8 @@
             } else {
               echo ('Non disponibile');
             } ?>" <?php if ($manga['Quantità'] <= 0) {
-              echo("disabled");
-            } ?> />
+               echo ("disabled");
+             } ?> />
           </section>
         </li>
       <?php endforeach; ?>
@@ -57,11 +57,13 @@
     <?php if (!empty($templateParams["TopRatedManga"])): ?>
       <?php foreach ($templateParams["TopRatedManga"] as $manga): ?>
         <li>
-          <article data-id="<?= htmlspecialchars($manga['idManga']) ?>">
-            <img src="../img/Manga/<?= htmlspecialchars($manga['Immagine']) ?>"
-              alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
-            <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
-            <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
+        <section>
+            <article data-id="<?= htmlspecialchars($manga['idManga']) ?>">
+              <img src="../img/Manga/<?= htmlspecialchars($manga['Immagine']) ?>"
+                alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
+              <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
+              <p>Prezzo: €<?= number_format($manga['Prezzo'], 2) ?></p>
+            </article>
             <input type="hidden" value="<?php echo ($manga['idManga']) ?>" />
             <input class="button" type="button" value="<?php if ($manga['Quantità'] > 0) {
               echo ('Aggiungi al carrello');
@@ -70,7 +72,7 @@
             } ?>" <?php if ($manga['Quantità'] <= 0) {
                echo ("disabled");
              } ?> />
-          </article>
+          </section>
         </li>
       <?php endforeach; ?>
     <?php else: ?>

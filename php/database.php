@@ -219,7 +219,7 @@ class DatabaseHelper
 
     public function getMangaInCart($email)
     {
-        $query = "SELECT idManga, Titolo, Immagine, Prezzo FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga";
+        $query = "SELECT idManga, Titolo, Immagine, Prezzo, C.Quantità AS Quantità_In_Carrello, M.Quantità AS Quantità_Disponibile FROM Manga M, Carrello C WHERE C.Utente_Email = ? AND M.idManga = C.Manga_idManga";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
