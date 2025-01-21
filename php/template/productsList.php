@@ -1,3 +1,12 @@
+<?php if (isset($templateParams["messaggio"])): ?>
+  <div class="alert text-center <?php if (str_starts_with($templateParams["messaggio"], "L") || str_starts_with($templateParams["messaggio"], "G")) {
+    echo ("alert-success");
+  } else {
+    echo ("alert-danger");
+  } ?>" role="alert">
+    <p class="fw-bold fs-2"><?php echo $templateParams["messaggio"]; ?></p>
+  </div>
+<?php endif; ?>
 <header>
     <a class="confirm-button" href="manageProducts.php?action=inserisci">Inserisci prodotto</a>
 </header>

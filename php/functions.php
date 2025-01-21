@@ -107,4 +107,8 @@ function uploadImage($path, $image){
     return array($result, $msg);
 }
 
+function deleteImg($path, $image){
+    unlink($path.$image);
+}
+
 ?>

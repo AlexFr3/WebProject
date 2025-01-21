@@ -447,5 +447,64 @@ class DatabaseHelper
             return false;
         }
     }
+
+
+    public function insertManga($voto, $titolo, $descrizione, $quantità, $immagine, $dataUscita, $prezzo){
+        $query = "INSERT INTO MANGA (voto, titolo, descrizione, quantità, immagine, Data_uscita, prezzo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('dssissd', $voto, $titolo, $descrizione, $quantità, $immagine, $dataUscita, $prezzo);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
+    public function insertCategoryOfManga($idManga, $idCategoria){
+        $query = "INSERT INTO manga_has_categoria (Manga_idManga, Categoria_idCategoria) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$idManga, $idCategoria);
+        return $stmt->execute();
+    }
+
+    public function insertGenreOfManga($idManga, $idGenre){
+        $query = "INSERT INTO manga_has_genere (Manga_idManga, Genere_idGenere) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$idManga, $idGenre);
+        return $stmt->execute();
+    }
+
+    public function deleteCategoriesOfManga($idManga){
+        $query = "DELETE FROM manga_has_categoria WHERE Manga_idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idManga);
+        return $stmt->execute();
+    }
+
+    public function deleteGenresOfManga($idManga){
+        $query = "DELETE FROM manga_has_genere WHERE Manga_idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idManga);
+        return $stmt->execute();
+    }
+    
+    public function deleteMangaInCarts($idManga){
+        $query = "DELETE FROM carrello WHERE Manga_idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idManga);
+        return $stmt->execute();
+    }
+
+    public function deleteMangaInOrders($idmanga){
+        $query = "DELETE FROM ordine_has_manga WHERE Manga_idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idManga);
+        return $stmt->execute();
+    }
+
+    public function deleteManga($idManga){
+        $query = "DELETE FROM manga WHERE idManga = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idManga);
+        return $stmt->execute();
+    }
 }
 ?>
