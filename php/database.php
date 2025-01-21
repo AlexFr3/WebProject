@@ -11,6 +11,18 @@ class DatabaseHelper
         }
     }
 
+    public function getOrdersByUser($email)
+    {
+        $query = "SELECT O.idOrdine, O.Data_ordine, O.Stato
+              FROM Ordine O
+              WHERE O.Utente_Email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email); 
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     public function getAllGenres()
     {
 
@@ -284,7 +296,8 @@ class DatabaseHelper
         }
     }
 
-    public function isMangaInCart($email, $idManga){
+    public function isMangaInCart($email, $idManga)
+    {
         $query = "SELECT * FROM CARRELLO WHERE Utente_Email = ? AND Manga_idManga = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $idManga);
@@ -315,10 +328,11 @@ class DatabaseHelper
         }
     }
 
-    public function changeQuantityInCart($email, $idManga, $increase){
-        if($increase){
+    public function changeQuantityInCart($email, $idManga, $increase)
+    {
+        if ($increase) {
             $query = "UPDATE CARRELLO SET Quantità = Quantità + 1 WHERE Utente_Email = ? AND Manga_idManga = ?";
-        } else{
+        } else {
             $query = "UPDATE CARRELLO SET Quantità = Quantità - 1 WHERE Utente_Email = ? AND Manga_idManga = ?";
         }
         $stmt = $this->db->prepare($query);
