@@ -11,6 +11,26 @@ class DatabaseHelper
         }
     }
 
+    public function getPostByIdAndAuthor($id, $idauthor){
+        $query = "SELECT idarticolo, anteprimaarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND autore=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$id, $idauthor);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getMangaDetails($idManga){
+        $query = "SELECT idManga, voto, titolo, descrizione, quantità, immagine, Data_uscita, Prezzo, (SELECT GROUP_CONCAT(descrizione) FROM manga_has_categoria M, Categoria C WHERE Manga_idManga=idManga AND C.id=Categoria_idCategoria GROUP BY idManga) as categorie, (SELECT GROUP_CONCAT(descrizione) FROM manga_has_genere M, Genere G WHERE Manga_idManga=idManga AND G.idGenere=M.Genere_idGenere GROUP BY idManga) as generi FROM manga WHERE idManga=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idManga);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getOrdersByUser($email)
     {
         $query = "SELECT O.idOrdine, O.Data_ordine, O.Stato
@@ -23,6 +43,7 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getAllGenres()
     {
 
@@ -128,6 +149,7 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getMangaById($idManga)
     {
         $query = "SELECT idManga, Titolo, Descrizione, Prezzo, Quantità, Immagine, Data_uscita 
