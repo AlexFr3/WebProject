@@ -175,7 +175,6 @@ body main section {
 }
 
 body main section article {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
