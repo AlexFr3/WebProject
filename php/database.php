@@ -33,7 +33,7 @@ class DatabaseHelper
 
     public function getOrdersByUser($email)
     {
-        $query = "SELECT O.idOrdine, O.Data_ordine, O.Totale
+        $query = "SELECT O.idOrdine, O.Data_ordine, O.Totale, O.Stato
               FROM Ordine O
               WHERE O.Utente_Email = ?";
         $stmt = $this->db->prepare($query);
