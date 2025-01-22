@@ -11,6 +11,22 @@ class DatabaseHelper
         }
     }
 
+    function getMangaByOrder($conn, $idOrdine) {
+        $sql = "SELECT m.Titolo, m.Descrizione, om.Quantità, om.Prezzo_unitario 
+                FROM Ordine_has_Manga om
+                JOIN Manga m ON om.Manga_idManga = m.idManga
+                WHERE om.Ordine_idOrdine = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $idOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $mangaList = [];
+        while ($row = $result->fetch_assoc()) {
+            $mangaList[] = $row;
+        }
+        $stmt->close();
+        return $mangaList;
+    }
     public function getPostByIdAndAuthor($id, $idauthor){
         $query = "SELECT idarticolo, anteprimaarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND autore=?";
         $stmt = $this->db->prepare($query);
