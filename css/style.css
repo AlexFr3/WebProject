@@ -472,13 +472,12 @@ body main footer a:hover{
 }
 .gestisci-prodotto ul li {
   display: flex;
-  align-items: center; /* Allinea verticalmente al centro */
-  justify-content: flex-start; /* Opzionale, per allineare le checkbox a sinistra */
-}
+  align-items: center;
+  justify-content: flex-start; 
 
 
 .checkbox label {
-  margin-left: 10px; /* Aggiunge uno spazio tra la checkbox e il testo */
+  margin-left: 10px;
   margin-right: 10px;
 }
 
