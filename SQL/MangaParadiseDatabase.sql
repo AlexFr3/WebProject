@@ -100,3 +100,20 @@ CREATE TABLE IF NOT EXISTS Ordine_has_Manga (
     FOREIGN KEY (Manga_idManga) REFERENCES Manga(idManga),
     PRIMARY KEY (Ordine_idOrdine, Manga_idManga)
 );
+
+-- -----------------------------------------------------
+-- Table `Notifica`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Notifica` (
+  `idNotifica` INT NOT NULL AUTO_INCREMENT,
+  `Testo` VARCHAR(150) NOT NULL,
+  `Letta` TINYINT(1) DEFAULT NULL,
+  `User_Email` VARCHAR(64) NOT NULL,
+  PRIMARY KEY (`idNotifica`),
+  INDEX `fk_Notifica_User_idx` (`User_Email`),
+  CONSTRAINT `fk_Notifica_User`
+    FOREIGN KEY (`User_Email`)
+    REFERENCES `Utente` (`Email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
