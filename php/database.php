@@ -244,6 +244,16 @@ class DatabaseHelper
         }
     }
 
+    public function getNotifiche($userEmail) {
+        $query = "SELECT * FROM Notifica WHERE User_Email = ? AND Letta = 0";
+        $stmt = $this -> db -> prepare($query);
+        $stmt -> bind_param('s',$userEmail);
+        $stmt -> execute();
+        $result = $stmt -> get_result();
+        $result = $result -> fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
     public function addToCart($idManga, $email)
     {
         $query = "INSERT INTO `Carrello` (`Utente_Email`, `Manga_idManga`) VALUES(?, ?)";
@@ -338,6 +348,14 @@ class DatabaseHelper
             $stmtDeleteCart = $this->db->prepare($queryDeleteCart);
             $stmtDeleteCart->bind_param("s", $userEmail);
             $stmtDeleteCart->execute();
+
+            // Crea una notifica per l'utente
+            $queryNotification = "INSERT INTO Notifica (Testo, Letta, User_Email) VALUES (?, ?, ?)";
+            $stmtNotification = $this->db->prepare($queryNotification);
+            $notificationText = "Il tuo ordine con ID $orderId è stato creato con successo.";
+            $notificationRead = 0; // 0 indica che la notifica non è stata ancora letta
+            $stmtNotification->bind_param("sis", $notificationText, $notificationRead, $userEmail);
+            $stmtNotification->execute();
             
             // Conferma la transazione
             $this->db->commit();
