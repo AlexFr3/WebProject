@@ -296,7 +296,7 @@ class DatabaseHelper
             $stmtCart->execute();
         }
     
-        return $currentQuantity; // Ritorna la quantità attuale per feedback
+        return $currentQuantity; 
     }
 
     public function createOrder($userEmail, $cartItems, $total) {
@@ -323,16 +323,20 @@ class DatabaseHelper
                     "iiid",
                     $orderId,
                     $item['idManga'],
-                    $item['quantity'],
-                    $item['price']
+                    $item['Quantità_In_Carrello'],
+                    $item['Prezzo']
                 );
                 $stmtOrderDetails->execute();
             }
-    
+            $queryDeleteCart = "DELETE FROM Carrello WHERE Utente_Email = ?";
+            $stmtDeleteCart = $this->db->prepare($queryDeleteCart);
+            $stmtDeleteCart->bind_param("s", $userEmail);
+            $stmtDeleteCart->execute();
+            
             // Conferma la transazione
             $this->db->commit();
     
-            return $orderId; // Ritorna l'ID dell'ordine creato
+            return $orderId; 
         } catch (Exception $e) {
             // In caso di errore, effettua un rollback
             $this->db->rollback();
