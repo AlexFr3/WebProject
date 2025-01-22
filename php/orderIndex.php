@@ -5,7 +5,7 @@ if(!isUserLoggedIn()){
 }else{
     $templateParams["titolo"] = "MangaParadise | Ordine";
     $templateParams["nome"] = "order.php";
-    $templateParams["scripts"] = ["darkMode.js"];
+    $templateParams["scripts"] = ["darkMode.js","sliderTrack.js"];
     if (isset($_GET['idOrdine'])) {
         $idOrdine = intval($_GET['idOrdine']); 
         $templateParams["ordine"] = $dbh->getMangaByOrder($idOrdine);

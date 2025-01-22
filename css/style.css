@@ -540,6 +540,30 @@ body main footer a:hover {
   width: 30%;
   padding: 0.5%;
 }
+.progress-container {
+  display: inline;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+}
+.track-img-icon{
+  width: 8%;
+  height: 8%;
+  margin-bottom: 5%;
+}
+.order-progress {
+  padding: 10px;
+  color:#0f2f75;
+  width: 60%;
+}
+.order-details{
+  margin: 40px auto;
+  background-color: var(--filter-form-color);
+  border-radius: 15px;
+  max-width: 500px;
+  padding-bottom: 2%;
+}
 @media screen and (min-width: 300px) {
   .img-logo {
     height: 30%;
@@ -584,4 +608,5 @@ body main footer a:hover {
     width: 5%;
     padding: 0.5%;
   }
+  
 }
