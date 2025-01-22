@@ -434,6 +434,7 @@ body main footer a:hover{
   text-decoration: none;
   min-width: 150px;
   display: inline-block; 
+  border: none;
 }
 /*end button*/
 

@@ -14,7 +14,7 @@
                 <label for="password">Password:</label><input type="password" id="password" name="password" />
             </li>
             <li>
-                <input class="button" type="submit" name="submit" value="Invia" />
+                <input class="profile-button" type="submit" name="submit" value="Invia" />
             </li>
         </ul>
         <p>Non hai un account? <a href="registrazione.php">Registrati</a></p>
