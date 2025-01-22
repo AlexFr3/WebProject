@@ -11,6 +11,12 @@ class DatabaseHelper
         }
     }
 
+    // Metodo per preparare la query
+    public function prepare($query) {
+        return $this->db->prepare($query);
+    }
+
+
     function getMangaByOrder($idOrdine) {
         $ordine = [];
         
