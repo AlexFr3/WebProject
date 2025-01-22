@@ -18,12 +18,12 @@
                 <?php foreach ($templateParams["ordine"]["prodotti"] as $manga): ?>
                     <li>
                         <p><?php echo htmlspecialchars($manga["Titolo"]); ?></p>
-                        <p><strong>Quantità:</strong> <?php echo intval($manga["Quantità"]); ?></p>
+                        <p>Quantità: <?php echo intval($manga["Quantità"]); ?></p>
                         <img src="../img/Manga/<?php echo htmlspecialchars($manga["Immagine"]); ?>" alt="<?php echo htmlspecialchars($manga["Titolo"]); ?>" class="manga-image" />
                     </li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
     </section>
-    <a href="orders.php" class="button">Torna agli ordini</a>
+    <a href="ordersIndex.php" class="button">Torna agli ordini</a>
 <?php endif; ?>
