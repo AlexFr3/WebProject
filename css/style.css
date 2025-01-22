@@ -474,7 +474,7 @@ body main footer a:hover{
   display: flex;
   align-items: center;
   justify-content: flex-start; 
-
+}
 
 .checkbox label {
   margin-left: 10px;
