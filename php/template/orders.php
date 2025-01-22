@@ -1,6 +1,6 @@
 <h1>Ordini</h1>
 <?php if (empty($templateParams["orders"])): ?>
-    <p class="no-orders">Non hai effettuato alcun ordine.</p>
+    <p>Non hai effettuato alcun ordine.</p>
 <?php else: ?>
     <?php foreach ($templateParams["orders"] as $ordine): ?>
         <article class="order">
@@ -10,7 +10,6 @@
                 <p><strong>Stato:</strong> <?php echo $ordine['Stato']; ?></p>
                 <p><strong>Totale:</strong> €<?php echo $ordine['Totale']; ?></p>
                 <input type="button" class="button" value="Visualizza dettagli ordine"/>
-
             </section>
             <section class="order-img-icon">
                 <?php 
