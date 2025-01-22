@@ -1,5 +1,5 @@
 
-<form action="#" method="post">
+<form action="checkoutIndex.php" method="post">
 <h1>Inserisci i dati della carta</h1>
 <ul>
     
@@ -28,32 +28,3 @@
     </li>
 </ul>
 </form>
-
-<?php 
-require_once 'bootstrap.php';
-
-try {
-    
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["submitButton"])) {
-        
-        if (isset($_POST["cardName"], $_POST["cardNumber"], $_POST["expiryDate"], $_POST["cvv"])) {
-        
-            $mangaInCar = $dbh->getMangaInCart($_SESSION["email"]);
-            foreach ($mangaInCar as $manga) {
-                $dbh->updateMangaQuantityAndCart($manga["idManga"], $manga["Quantità_In_Carrello"]);
-            }
-            
-            $totalPrice = $dbh->getTotalPrice($_SESSION["email"]);
-            
-            $dbh->createOrder($_SESSION["email"], $mangaInCar, $totalPrice);
-
-            echo "<p>Ordine completato con successo! Grazie per il tuo acquisto.</p>";
-        } else {
-
-            throw new Exception("Dati del modulo mancanti o incompleti.");
-        }
-    }
-} catch (Exception $e) {
-    echo "<p>Errore durante l'elaborazione dell'ordine: " . htmlspecialchars($e->getMessage()) . "</p>";
-}
-?>
