@@ -9,19 +9,16 @@
         <p><strong>Stato:</strong> <?php echo htmlspecialchars($templateParams["ordine"]["Stato"]); ?></p>
         <p><strong>Totale:</strong> €<?php echo number_format($templateParams["ordine"]["Totale"], 2); ?></p>
     </section>
-    <section class="order-manga">
+    <section>
         <h2>Prodotti Inclusi</h2>
         <?php if (empty($templateParams["ordine"]["prodotti"])): ?>
             <p>Non ci sono prodotti associati a questo ordine.</p>
         <?php else: ?>
-            <ul class="manga-list">
+            <ul>
                 <?php foreach ($templateParams["ordine"]["prodotti"] as $manga): ?>
-                    <li class="manga-item">
-                        <h3><?php echo htmlspecialchars($manga["Titolo"]); ?></h3>
-                        <p><?php echo htmlspecialchars($manga["Descrizione"]); ?></p>
+                    <li>
+                        <p><?php echo htmlspecialchars($manga["Titolo"]); ?></p>
                         <p><strong>Quantità:</strong> <?php echo intval($manga["Quantità"]); ?></p>
-                        <p><strong>Prezzo unitario:</strong> €<?php echo number_format($manga["Prezzo_unitario"], 2); ?></p>
-                        <p><strong>Totale:</strong> €<?php echo number_format($manga["Quantità"] * $manga["Prezzo_unitario"], 2); ?></p>
                         <img src="../img/Manga/<?php echo htmlspecialchars($manga["Immagine"]); ?>" alt="<?php echo htmlspecialchars($manga["Titolo"]); ?>" class="manga-image" />
                     </li>
                 <?php endforeach; ?>
