@@ -564,6 +564,38 @@ body main footer a:hover {
   max-width: 500px;
   padding-bottom: 2%;
 }
+
+body > main > section > form {
+  display: flex;
+  flex-direction: column; /* Puoi mantenere la disposizione a colonna se vuoi */
+  align-items: center; /* Centra orizzontalmente */
+  justify-content: center; /* Centra verticalmente */
+}
+
+body > main > section > form > article {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  margin: 10px; 
+}
+
+body > main > section > form > article {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  margin: 3%; 
+  background-color: #36a8df;
+  padding: 10px;
+  border-radius: 10px;
+  width: auto;
+}
+
+body > main > section > form > article label {
+  margin-left: 10px; 
+  
+}
+
+
 @media screen and (min-width: 300px) {
   .img-logo {
     height: 30%;

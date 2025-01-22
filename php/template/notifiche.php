@@ -31,7 +31,7 @@
                     <?php
                 }
                 ?>
-                <button type="submit" name="markRead">Segna come lette</button>
+                <button type="submit" name="markRead" class="profile-button">Segna come lette</button>
                 <?php
             } else {
                 echo "<p>Non ci sono notifiche disponibili.</p>";
