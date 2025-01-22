@@ -294,6 +294,12 @@ class DatabaseHelper
             $stmtCart = $this->db->prepare($queryDeleteCart);
             $stmtCart->bind_param("i", $idManga);
             $stmtCart->execute();
+        } else{
+            //altrimenti imposta la quantità del manga nei carrelli alla quantità disponibile se è maggiore
+            $queryAdjustQuantity = "UPDATE Carrello SET Quantità = ? WHERE Manga_idManga = ? AND Quantità > ?";
+            $stmtAdjustQuantity = $this->db->prepare($queryAdjustQuantity);
+            $stmtAdjustQuantity->bind_param("iii", $currentQuantity, $idManga, $currentQuantity);
+            $stmtAdjustQuantity->execute();
         }
     
         return $currentQuantity; 

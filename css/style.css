@@ -434,6 +434,7 @@ body main footer a:hover{
   text-decoration: none;
   min-width: 150px;
   display: inline-block; 
+  border: none;
 }
 /*end button*/
 
@@ -454,8 +455,34 @@ body main footer a:hover{
 }
 .img-manga{
   width: 40%;
-  padding-bottom: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%; 
 }
+
+.gestisci-prodotto ul li input[type="text"],
+.gestisci-prodotto ul li input[type="number"],
+.gestisci-prodotto ul li input[type="date"],
+.gestisci-prodotto ul li textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--button-color);
+  background-color: #f4f8fb;
+  color: black;
+  font-size: 1rem;
+}
+.gestisci-prodotto ul li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+}
+
+.checkbox label {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
 @media screen and (min-width: 1024px) {
   body > header {
     height: 6%;

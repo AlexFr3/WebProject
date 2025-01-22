@@ -2,7 +2,7 @@
             $manga = $templateParams["manga"]; 
             $azione = $templateParams["azione"];
         ?>
-        <form action="processProduct.php" method="POST" enctype="multipart/form-data">
+        <form class="gestisci-prodotto" action="processProduct.php" method="POST" enctype="multipart/form-data">
             <h1>Gestisci Prodotto</h1>
             <?php if($manga==null): ?>
             <p>Prodotto non trovato</p>
@@ -31,10 +31,10 @@
                     <label for="imgmanga">Immagine Manga</label><input type="file" name="imgmanga" id="imgmanga" />
                     <?php endif; ?>
                     <?php if($templateParams["azione"]!=="inserisci"): ?>
-                    <img src="<?php echo "../img/manga/".$manga["immagine"]; ?>" alt="" />
+                    <img class="img-manga" src="<?php echo "../img/manga/".$manga["immagine"]; ?>" alt="" />
                     <?php endif; ?>
                 </li>
-                <li>
+                <li><section class="checkbox">
                     <?php foreach($templateParams["categorie"] as $categoria): ?>
                     <input type="checkbox" id="<?php echo $categoria["idCategoria"]; ?>" name="categoria_<?php echo $categoria["idCategoria"]; ?>" <?php 
                         if(in_array($categoria["idCategoria"], $manga["categorie"])){ 
@@ -42,8 +42,10 @@
                         } 
                     ?> /><label for="<?php echo $categoria["idCategoria"]; ?>"><?php echo $categoria["Descrizione"]; ?></label>
                     <?php endforeach; ?>
+                    </section>
                 </li>
                 <li>
+                    <section class="checkbox">
                     <?php foreach($templateParams["generi"] as $genere): ?>
                     <input type="checkbox" id="<?php echo $genere["idGenere"]; ?>" name="genere_<?php echo $genere["idGenere"] ?>" <?php 
                         if(in_array($genere["idGenere"], $manga["generi"])){ 
@@ -51,10 +53,11 @@
                         } 
                     ?> /><label for="<?php echo $genere["idGenere"]; ?>"><?php echo $genere["Descrizione"]; ?></label>
                     <?php endforeach; ?>
+                    </section>
                 </li>
                 <li>
                     <input type="submit" name="submit" value="<?php echo $azione; ?> Prodotto" />
-                    <a href="products.php">Annulla</a>
+                    <a  class="button" href="products.php">Annulla</a>
                 </li>
             </ul>
                 <?php if($templateParams["azione"]!=="inserisci"): ?>
