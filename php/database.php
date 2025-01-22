@@ -16,7 +16,7 @@ class DatabaseHelper
                 FROM Ordine_has_Manga om
                 JOIN Manga m ON om.Manga_idManga = m.idManga
                 WHERE om.Ordine_idOrdine = ?";
-        $stmt = $conn->prepare($sql);
+        $stmt = $this->db->prepare($sql);
         $stmt->bind_param("i", $idOrdine);
         $stmt->execute();
         $result = $stmt->get_result();
