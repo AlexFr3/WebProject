@@ -11,6 +11,34 @@ class DatabaseHelper
         }
     }
 
+    function getMangaByOrder($idOrdine) {
+        $ordine = [];
+        
+        // Query per ottenere i dettagli principali dell'ordine
+        $queryOrdine = "SELECT idOrdine, Data_ordine, Stato, Totale FROM Ordine WHERE idOrdine = ?";
+        $stmt = $this->db->prepare($queryOrdine);
+        $stmt->bind_param('i', $idOrdine); // 'i' indica un parametro di tipo intero
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $ordine = $result->fetch_assoc();
+        
+        if ($ordine) {
+            // Query per ottenere i manga inclusi nell'ordine, con l'immagine del manga
+            $queryManga = "
+                SELECT m.Titolo, m.Descrizione, ohm.Quantità, ohm.Prezzo_unitario, m.Immagine
+                FROM Ordine_has_Manga ohm
+                INNER JOIN Manga m ON ohm.Manga_idManga = m.idManga
+                WHERE ohm.Ordine_idOrdine = ?
+            ";
+            $stmt = $this->db->prepare($queryManga);
+            $stmt->bind_param('i', $idOrdine); // 'i' indica un parametro di tipo intero
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $ordine["prodotti"] = $result->fetch_all(MYSQLI_ASSOC); // Restituisce tutti i manga in un array
+        }
+        
+        return $ordine;
+    }
     public function getPostByIdAndAuthor($id, $idauthor){
         $query = "SELECT idarticolo, anteprimaarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND autore=?";
         $stmt = $this->db->prepare($query);
