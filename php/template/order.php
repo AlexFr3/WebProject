@@ -25,5 +25,5 @@
             </ul>
         <?php endif; ?>
     </section>
-    <a href="ordersIndex.php" class="button">Torna agli ordini</a>
+    <p><a href="ordersIndex.php" class="button">Torna agli ordini</a></p>
 <?php endif; ?>
