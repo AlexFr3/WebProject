@@ -23,7 +23,7 @@ try {
         }
     }
 } catch (Exception $e) {
-    "Non è stato possibile elaborare l'ordine: ".htmlspecialchars($e->getMessage());
+    $msg = "Non è stato possibile elaborare l'ordine: ".htmlspecialchars($e->getMessage());
     header("location: shoppingCartIndex.php?msg=".$msg);
 }
 $templateParams["titolo"] = "MangaParadise | Checkout";
