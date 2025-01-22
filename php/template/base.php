@@ -24,7 +24,7 @@
       <li><a href="products.php">Prodotti</a></li> 
       <?php endif; ?>
       <li>
-        <button id="darkModeButton">🌙 Dark Mode</button>
+        <button id="darkModeButton">⏾</button>
       </li>
     </ul>
   </nav>
