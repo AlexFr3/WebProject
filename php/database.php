@@ -11,7 +11,7 @@ class DatabaseHelper
         }
     }
 
-    function getMangaByOrder($conn, $idOrdine) {
+    function getMangaByOrder($idOrdine) {
         $sql = "SELECT m.Titolo, m.Descrizione, om.Quantità, om.Prezzo_unitario 
                 FROM Ordine_has_Manga om
                 JOIN Manga m ON om.Manga_idManga = m.idManga
