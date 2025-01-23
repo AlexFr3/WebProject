@@ -38,7 +38,7 @@
         <?php endif; ?>
     </section>
     <?php if($templateParams['ordine']['Stato'] ==='In elaborazione'): ?>
-    <p><a href="#" class="confirm-button">Spedito</a></p>
+    <p><a href="sendOrder.php?idOrdine=<?php echo($templateParams["ordine"]["idOrdine"]); ?>" class="confirm-button">Spedito</a></p>
     <?php else: ?>
     <p><a href="#" class="confirm-button">Consegnato</a></p>
     <?php endif; ?>

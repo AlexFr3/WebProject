@@ -26,7 +26,7 @@
                 <section class="order-img-icon">
                     <img src="../img/parcel.svg" alt="<?php echo $ordine['Stato']; ?>" />
                 </section>
-                <a href="" class="confirm-button">Spedito</a>
+                <a href="sendOrder.php?idOrdine=<?php echo $ordine['idOrdine']; ?>" class="confirm-button">Spedito</a>
             </article>
         <?php endforeach; ?>
     <?php endif; ?>

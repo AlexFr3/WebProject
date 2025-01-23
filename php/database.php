@@ -45,14 +45,50 @@ class DatabaseHelper
         
         return $ordine;
     }
-    public function getPostByIdAndAuthor($id, $idauthor){
-        $query = "SELECT idarticolo, anteprimaarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND autore=?";
+
+    public function getOrderDetails($idOrdine){
+        $query = "SELECT Utente_Email, Stato FROM Ordine WHERE idOrdine = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii',$id, $idauthor);
+        $stmt->bind_param('i', $idOrdine); // 'i' indica un parametro di tipo intero
         $stmt->execute();
         $result = $stmt->get_result();
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        if(count($result)==0){
+            return array();
+        } else {
+            return $result[0];
+        }
+    }
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+    public function sendOrder($idOrdine){
+        $query = "UPDATE Ordine SET Stato = 'Spedito' WHERE idOrdine = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idOrdine);
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function addSendingNotify($email, $idOrdine){
+        $testo = "Il tuo ordine con id #".$idOrdine." è stato spedito";
+        $query = "INSERT INTO Notifica (Testo, Letta, User_Email) VALUES (?, 0, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $testo, $email);
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     public function getMangaDetails($idManga){
