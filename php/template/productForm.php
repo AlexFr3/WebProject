@@ -21,7 +21,7 @@
                     <label for="quantità">Quantità</label><input type="number" step="1" min="0" id="quantità" name="quantità" value="<?php echo $manga["quantità"]; ?>" />
                 </li>
                 <li>
-                    <label for="Prezzo">Prezzo:</label><input type="number" step="0.01" min="0" id="prezzo" name="prezzo" value="<?php echo $manga["Prezzo"]; ?>" />
+                    <label for="prezzo">Prezzo:</label><input type="number" step="0.01" min="0" id="prezzo" name="prezzo" value="<?php echo $manga["Prezzo"]; ?>" />
                 </li>
                 <li>
                     <label for="Data">Data di uscita:</label><input type="date" id="Data" name="Data" value="<?php echo $manga["Data_uscita"]; ?>" />
@@ -36,22 +36,22 @@
                 </li>
                 <li><section class="checkbox">
                     <?php foreach($templateParams["categorie"] as $categoria): ?>
-                    <input type="checkbox" id="<?php echo $categoria["idCategoria"]; ?>" name="categoria_<?php echo $categoria["idCategoria"]; ?>" <?php 
+                    <input type="checkbox" id="categoria_<?php echo $categoria["idCategoria"]; ?>" name="categoria_<?php echo $categoria["idCategoria"]; ?>" <?php 
                         if(in_array($categoria["idCategoria"], $manga["categorie"])){ 
                             echo ' checked="checked" '; 
                         } 
-                    ?> /><label for="<?php echo $categoria["idCategoria"]; ?>"><?php echo $categoria["Descrizione"]; ?></label>
+                    ?> /><label for="categoria_<?php echo $categoria["idCategoria"]; ?>"><?php echo $categoria["Descrizione"]; ?></label>
                     <?php endforeach; ?>
                     </section>
                 </li>
                 <li>
                     <section class="checkbox">
                     <?php foreach($templateParams["generi"] as $genere): ?>
-                    <input type="checkbox" id="<?php echo $genere["idGenere"]; ?>" name="genere_<?php echo $genere["idGenere"] ?>" <?php 
+                    <input type="checkbox" id="genere_<?php echo $genere["idGenere"]; ?>" name="genere_<?php echo $genere["idGenere"] ?>" <?php 
                         if(in_array($genere["idGenere"], $manga["generi"])){ 
                             echo ' checked="checked" '; 
                         } 
-                    ?> /><label for="<?php echo $genere["idGenere"]; ?>"><?php echo $genere["Descrizione"]; ?></label>
+                    ?> /><label for="genere_<?php echo $genere["idGenere"]; ?>"><?php echo $genere["Descrizione"]; ?></label>
                     <?php endforeach; ?>
                     </section>
                 </li>
