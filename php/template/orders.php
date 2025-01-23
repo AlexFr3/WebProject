@@ -9,9 +9,10 @@
                 <p><strong>Data Ordine:</strong> <?php echo $ordine['Data_ordine']; ?></p>
                 <p><strong>Stato:</strong> <?php echo $ordine['Stato']; ?></p>
                 <p><strong>Totale:</strong> €<?php echo $ordine['Totale']; ?></p>
-                <a href="orderIndex.php?idOrdine=<?php echo $ordine['idOrdine']; ?>" class="button">Dettagli ordine</a>            </section>
+                <a href="orderIndex.php?idOrdine=<?php echo $ordine['idOrdine']; ?>" class="button">Dettagli ordine</a>
+            </section>
             <section class="order-img-icon">
-                <?php 
+                <?php
                 switch ($ordine['Stato']) {
                     case 'In elaborazione':
                         $imgPath = '../img/parcel.svg';
@@ -23,7 +24,7 @@
                         $imgPath = '../img/check.svg';
                         break;
                     default:
-                        $imgPath = '../img/loading.png'; 
+                        $imgPath = '../img/loading.png';
                         break;
                 }
                 ?>
