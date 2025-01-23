@@ -78,6 +78,28 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getElaborationOrders(){
+        $query = "SELECT O.idOrdine, O.Data_ordine, O.Totale, O.Stato
+              FROM Ordine O
+              WHERE O.Stato = 'In elaborazione'";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getSentOrders(){
+        $query = "SELECT O.idOrdine, O.Data_ordine, O.Totale, O.Stato
+              FROM Ordine O
+              WHERE O.Stato = 'Spedito'";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getAllGenres()
     {
 

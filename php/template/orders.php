@@ -17,13 +17,13 @@
                         $imgPath = '../img/parcel.svg';
                         break;
                     case 'Spedito':
-                        $imgPath = 'path/to/truck.svg';
+                        $imgPath = '../img/truck.svg';
                         break;
                     case 'Consegnato':
-                        $imgPath = 'path/to/check.svg';
+                        $imgPath = '../img/check.svg';
                         break;
                     default:
-                        $imgPath = 'path/to/loading.png'; 
+                        $imgPath = '../img/loading.png'; 
                         break;
                 }
                 ?>
