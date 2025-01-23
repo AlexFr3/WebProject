@@ -1,4 +1,13 @@
 <h1>Gestione ordini ricevuti</h1>
+<?php if (isset($templateParams["messaggio"])): ?>
+  <div class="alert text-center <?php if (str_starts_with($templateParams["messaggio"], "L") || str_starts_with($templateParams["messaggio"], "G")) {
+    echo ("alert-success");
+  } else {
+    echo ("alert-danger");
+  } ?>" role="alert">
+    <p class="fw-bold fs-2"><?php echo $templateParams["messaggio"]; ?></p>
+  </div>
+<?php endif; ?>
 <section>
     <h2>Ordini in elaborazione</h2>
     <?php if (empty($templateParams["ordiniDaSpedire"])): ?>

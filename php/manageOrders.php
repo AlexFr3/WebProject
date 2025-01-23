@@ -6,9 +6,9 @@ if(!isUserLoggedIn()){
     if(!isUserSeller()){
         header("location: index.php");
     } else{
-        if(isset($_GET["formmsg"])){
-            $templateParams["messaggio"] = $_GET["formmsg"];
-            unset($_GET["formmsg"]);
+        if(isset($_GET["msg"])){
+            $templateParams["messaggio"] = $_GET["msg"];
+            unset($_GET["msg"]);
         }
         $templateParams["ordiniDaSpedire"] = $dbh->getElaborationOrders();
         $templateParams["ordiniDaConsegnare"] = $dbh->getSentOrders();
