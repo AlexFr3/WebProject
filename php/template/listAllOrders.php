@@ -11,7 +11,7 @@
                 <p><strong>Data Ordine:</strong> <?php echo $ordine['Data_ordine']; ?></p>
                 <p><strong>Stato:</strong> <?php echo $ordine['Stato']; ?></p>
                 <p><strong>Totale:</strong> €<?php echo $ordine['Totale']; ?></p>
-                <a href="orderIndex.php?idOrdine=<?php echo $ordine['idOrdine']; ?>" class="button">Visualizza dettagli ordine</a>            </section>
+                <a href="orderDetails.php?idOrdine=<?php echo $ordine['idOrdine']; ?>" class="button">Visualizza dettagli ordine</a>            </section>
             <section class="order-img-icon">
                 <img src="../img/parcel.svg" alt="<?php echo $ordine['Stato']; ?>" />
             </section>
@@ -32,7 +32,7 @@
                 <p><strong>Data Ordine:</strong> <?php echo $ordine['Data_ordine']; ?></p>
                 <p><strong>Stato:</strong> <?php echo $ordine['Stato']; ?></p>
                 <p><strong>Totale:</strong> €<?php echo $ordine['Totale']; ?></p>
-                <a href="orderIndex.php?idOrdine=<?php echo $ordine['idOrdine']; ?>" class="button">Visualizza dettagli ordine</a>            </section>
+                <a href="orderDetails.php?idOrdine=<?php echo $ordine['idOrdine']; ?>" class="button">Visualizza dettagli ordine</a>            </section>
             <section class="order-img-icon">
                 <img src="../img/truck.svg" alt="<?php echo $ordine['Stato']; ?>" />
             </section>
