@@ -39,8 +39,8 @@
     </section>
     <?php if($templateParams['ordine']['Stato'] ==='In elaborazione'): ?>
     <p><a href="sendOrder.php?idOrdine=<?php echo($templateParams["ordine"]["idOrdine"]); ?>" class="confirm-button">Spedito</a></p>
-    <?php else: ?>
-    <p><a href="#" class="confirm-button">Consegnato</a></p>
+    <?php elseif($templateParams['ordine']['Stato'] ==='Spedito'): ?>
+    <p><a href="deliverOrder.php?idOrdine=<?php echo($templateParams["ordine"]["idOrdine"]); ?>" class="confirm-button">Consegnato</a></p>
     <?php endif; ?>
     <p><a href="manageOrders.php" class="button">Torna alla gestione ordini</a></p>
 <?php endif; ?>

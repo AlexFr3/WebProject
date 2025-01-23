@@ -75,8 +75,39 @@ class DatabaseHelper
         }
     }
 
+    public function deliverOrder($idOrdine){
+        $query = "UPDATE Ordine SET Stato = 'Consegnato' WHERE idOrdine = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idOrdine);
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     public function addSendingNotify($email, $idOrdine){
         $testo = "Il tuo ordine con id #".$idOrdine." è stato spedito";
+        $query = "INSERT INTO Notifica (Testo, Letta, User_Email) VALUES (?, 0, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $testo, $email);
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function addDeliveringNotify($email, $idOrdine){
+        $testo = "Il tuo ordine con id #".$idOrdine." è stato consegnato";
         $query = "INSERT INTO Notifica (Testo, Letta, User_Email) VALUES (?, 0, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $testo, $email);

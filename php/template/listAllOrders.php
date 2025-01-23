@@ -48,7 +48,7 @@
                 <section class="order-img-icon">
                     <img src="../img/truck.svg" alt="<?php echo $ordine['Stato']; ?>" />
                 </section>
-                <a href="" class="confirm-button">Consegnato</a>
+                <a href="deliverOrder.php?idOrdine=<?php echo $ordine['idOrdine']; ?>" class="confirm-button">Consegnato</a>
             </article>
         <?php endforeach; ?>
     <?php endif; ?>
