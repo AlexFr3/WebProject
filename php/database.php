@@ -524,8 +524,21 @@ class DatabaseHelper
         $query = "UPDATE Manga SET voto = ?, titolo = ?, descrizione = ?, quantità = ?, immagine = ?, Data_uscita = ?, prezzo = ? WHERE idManga = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('dssissdi', $voto, $titolo, $descrizione, $quantità, $immagine, $dataUscita, $prezzo, $idManga);
-        
-        return $stmt->execute();
+        $stmt->execute();
+
+        if ($quantità == 0) {
+            //se la quantità è 0 rimuovi il manga nei carrelli
+            $queryDeleteCart = "DELETE FROM Carrello WHERE Manga_idManga = ?";
+            $stmtCart = $this->db->prepare($queryDeleteCart);
+            $stmtCart->bind_param("i", $idManga);
+            $stmtCart->execute();
+        } else{
+            //altrimenti imposta la quantità del manga nei carrelli alla quantità disponibile se è maggiore
+            $queryAdjustQuantity = "UPDATE Carrello SET Quantità = ? WHERE Manga_idManga = ? AND Quantità > ?";
+            $stmtAdjustQuantity = $this->db->prepare($queryAdjustQuantity);
+            $stmtAdjustQuantity->bind_param("iii", $quantità, $idManga, $quantità);
+            $stmtAdjustQuantity->execute();
+        }
     }
 
     public function deleteCategoryOfManga($idManga, $idCategoria){
