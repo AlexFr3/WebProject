@@ -1,4 +1,4 @@
-<h1>Ordini</h1>
+<h1>I miei ordini</h1>
 <?php if (empty($templateParams["orders"])): ?>
     <p>Non hai effettuato alcun ordine.</p>
 <?php else: ?>
