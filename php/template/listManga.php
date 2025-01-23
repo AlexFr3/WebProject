@@ -35,11 +35,13 @@
     <h3 class="mt-4 mb-3">Prezzo</h3>
     <ul class="list-unstyled">
       <li>
+        <section class="priceRange">
         <label for="priceRange" class="form-label">
           <span class="rangeValue">50</span>€
         </label>
         <input type="range"  min="0" max="100" step="1" name="price" id="priceRange" value="50"
           oninput="updateValue(this.value)" />
+          </section>
       </li>
     </ul>
 
@@ -56,7 +58,7 @@
       <?php endforeach; ?>
     </ul>
 
-    <button type="submit" class="btn btn-primary mt-4 rounded-pill">Filtra</button>
+    <p><button type="submit" class="btn btn-primary mt-4 rounded-pill">Filtra</button></p>
   </form>
 </section>
 
@@ -65,8 +67,8 @@
     <?php if (!empty($templateParams["allManga"])): ?>
       <?php foreach ($templateParams["allManga"] as $manga): ?>
         <li>
-          <section>
-            <article data-id="<?= htmlspecialchars($manga['idManga']) ?>">
+          <section >
+            <article  data-id="<?= htmlspecialchars($manga['idManga']) ?>">
               <img src="../img/Manga/<?= htmlspecialchars($manga['Immagine']) ?>"
                 alt="<?= htmlspecialchars($manga['Titolo']) ?>" />
               <h2><?= htmlspecialchars($manga['Titolo']) ?></h2>
