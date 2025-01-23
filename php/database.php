@@ -315,7 +315,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function updateMangaQuantityAndCart($idManga, $quantityToRemove) {
+    public function updateMangaQuantityAndCart($idManga, $quantityToRemove, $nameManga) {
         // Riduci la quantità nella tabella Manga
         $queryManga = "UPDATE Manga 
                        SET Quantità = GREATEST(Quantità - ?, 0) 
@@ -334,10 +334,14 @@ class DatabaseHelper
     
         // Se la quantità è zero, rimuovi il manga dal carrello
         if ($currentQuantity == 0) {
-            $queryDeleteCart = "DELETE FROM Carrello WHERE Manga_idManga = ?";
-            $stmtCart = $this->db->prepare($queryDeleteCart);
-            $stmtCart->bind_param("i", $idManga);
-            $stmtCart->execute();
+            $queryNotify = "INSERT INTO Notifica (Testo, Letta, User_Email) 
+                    SELECT ?, 0, Email 
+                    FROM Utente 
+                    WHERE Venditore = 1";
+            $message = "Il manga: $nameManga è esaurito.";
+            $stmt = $this -> db -> prepare($queryNotify);
+            $stmt -> bind_param("s",$message);
+            $stmt -> execute();
         } else{
             //altrimenti imposta la quantità del manga nei carrelli alla quantità disponibile se è maggiore
             $queryAdjustQuantity = "UPDATE Carrello SET Quantità = ? WHERE Manga_idManga = ? AND Quantità > ?";
@@ -390,6 +394,16 @@ class DatabaseHelper
             $notificationRead = 0; // 0 indica che la notifica non è stata ancora letta
             $stmtNotification->bind_param("sis", $notificationText, $notificationRead, $userEmail);
             $stmtNotification->execute();
+
+            // Crea notifiche per tutti i venditori
+            $queryNotifyVendors = "INSERT INTO Notifica (Testo, Letta, User_Email) 
+                                SELECT ?, 0, Email 
+                                FROM Utente 
+                                WHERE Venditore = 1";
+            $stmtNotifyVendors = $this->db->prepare($queryNotifyVendors);
+            $vendorNotificationText = "Un nuovo ordine con ID $orderId è stato creato.";
+            $stmtNotifyVendors->bind_param("s", $vendorNotificationText);
+            $stmtNotifyVendors->execute();
             
             // Conferma la transazione
             $this->db->commit();
@@ -401,6 +415,7 @@ class DatabaseHelper
             throw $e;
         }
     }
+
 
     public function getTotalPrice($email)
     {

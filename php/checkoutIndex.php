@@ -9,7 +9,7 @@ try {
         
             $mangaInCar = $dbh->getMangaInCart($_SESSION["email"]);
             foreach ($mangaInCar as $manga) {
-                $dbh->updateMangaQuantityAndCart($manga["idManga"], $manga["Quantità_In_Carrello"]);
+                $dbh->updateMangaQuantityAndCart($manga["idManga"], $manga["Quantità_In_Carrello"], $manga["Titolo"]);
             }
             
             $totalPrice = $dbh->getTotalPrice($_SESSION["email"]);
