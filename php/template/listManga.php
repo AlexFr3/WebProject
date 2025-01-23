@@ -35,7 +35,7 @@
     <h3 class="mt-4 mb-3">Prezzo</h3>
     <ul class="list-unstyled">
       <li>
-        <section class="priceRange">
+        <section>
         <label for="priceRange" class="form-label">
           <span class="rangeValue">50</span>€
         </label>
