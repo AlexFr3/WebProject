@@ -4,8 +4,8 @@
     <section>
         <section class="manga-details">
             <h1><?php echo htmlspecialchars($manga["Titolo"]); ?></h1>
-            <img class="img-manga" src="../img/Manga/<?php echo htmlspecialchars($manga["Immagine"]); ?>"
-                alt="<?php echo htmlspecialchars($manga["Titolo"]); ?>" class="manga-image">
+            <img class="img-manga manga-image" src="../img/Manga/<?php echo htmlspecialchars($manga["Immagine"]); ?>"
+                alt="<?php echo htmlspecialchars($manga["Titolo"]); ?>" />
         </section>
         <section>
             <p><strong>Descrizione:</strong> <?php echo nl2br(htmlspecialchars($manga["Descrizione"])); ?></p>
