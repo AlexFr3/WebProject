@@ -22,6 +22,7 @@
       <li><a href="shoppingCartIndex.php">Carrello</a></li>
       <?php if(isUserSeller()): ?>
       <li><a href="products.php">Prodotti</a></li> 
+      <li><a href="manageOrders.php">Ordini</a></li>
       <?php endif; ?>
       <li>
         <button id="darkModeButton">⏾</button>
